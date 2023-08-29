@@ -1,0 +1,40 @@
+# Virtual environment
+venv/
+Env/
+
+# Database files
+*.sqlite3
+*.db
+
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Media and static files
+media/
+staticfiles/
+
+# Secret keys
+*.secret_key
+
+# Environment variables
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# Compiled frontend files
+node_modules/
+dist/
+
+# Compiled backend files
+__pycache__/
+
+# Log files
+*.log
+
+# Dependency files
+requirements.txt
