@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>Instructors Management</h1>
+    
+    <!-- Add a form for creating instructors -->
+    <form (submit)="createInstructor()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="newInstructor.name" name="name" required>
+      
+      <label for="gender">Gender:</label>
+      <label>
+        <input type="radio" id="male" [(ngModel)]="newInstructor.gender" name="gender" value="Male" required>
+        Male
+      </label>
+      <label>
+        <input type="radio" id="female" [(ngModel)]="newInstructor.gender" name="gender" value="Female">
+        Female
+      </label>
+      <label>
+        <input type="radio" id="other" [(ngModel)]="newInstructor.gender" name="gender" value="Other">
+        Other
+      </label>
+      
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" [(ngModel)]="newInstructor.dateOfBirth" name="dob" required>
+      
+      <label for="department">Department:</label>
+      <select id="department" [(ngModel)]="newInstructor.department" name="department" required>
+        <option value="Science">Science</option>
+        <option value="Arts">Arts</option>
+        <option value="Engineering">Engineering</option>
+        <!-- Add more options as needed -->
+      </select>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="newInstructor.email" name="email" required>
+      
+      <label for="contact">Contact Number:</label>
+      <input type="text" id="contact" [(ngModel)]="newInstructor.contactNumber" name="contact" required>
+      
+      <button type="submit">Create Instructor</button>
+    </form>
+    
+    <!-- Display the list of instructors -->
+    <h2>Instructors List</h2>
+    <ul>
+      <li *ngFor="let instructor of instructors">
+        {{ instructor.name }} ({{ instructor.email }})
+        <button (click)="editInstructor(instructor)">Edit</button>
+        <button (click)="deleteInstructor(instructor.id)">Delete</button>
+      </li>
+    </ul>
+    <!-- Add an edit form -->
+<form (submit)="updateInstructor()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="newInstructor.name" name="name" required>
+    <!-- Other fields similar to the create form -->
+    <button type="submit">Update Instructor</button>
+  </form>
+  
+  </div>
+  

@@ -1,0 +1,64 @@
+<h2>Add Student</h2>
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+  <br />
+
+  <label>
+    Student ID:
+    <input type="text" formControlName="studentId" />
+  </label>
+  <br />
+
+  <label>Gender:</label>
+  <label>
+    <input type="radio" value="Male" formControlName="gender" /> Male
+  </label>
+  <label>
+    <input type="radio" value="Female" formControlName="gender" /> Female
+  </label>
+  <label>
+    <input type="radio" value="Other" formControlName="gender" /> Other
+  </label>
+  <br />
+
+  <label>
+    Date of Birth:
+    <input type="date" formControlName="dob" />
+  </label>
+  <br />
+
+  <label>
+    Major:
+    <select formControlName="major">
+      <option value="Computer Science">Computer Science</option>
+      <option value="Engineering">Engineering</option>
+      <option value="Business">Business</option>
+      <!-- Add other options here -->
+    </select>
+  </label>
+  <br />
+
+  <label>
+    Email:
+    <input type="email" formControlName="email" />
+  </label>
+  <br />
+
+  <label>
+    Contact Number:
+    <input type="text" formControlName="contactNumber" />
+  </label>
+  <br />
+
+  <button type="submit">Add Student</button>
+</form>
+<h2>Students</h2>
+<ul>
+  <li *ngFor="let student of students">
+    {{ student.name }} ({{ student.major }}) - {{ student.email }}
+    <button (click)="deleteStudent(student.student_id)">Delete</button>
+  </li>
+</ul>
