@@ -1,1 +1,31 @@
-<p>announcements works!</p>
+<div class="announcements">
+    <h2>Announcements</h2>
+    <ul>
+      <li *ngFor="let announcement of announcements">
+        <h3>{{ announcement.title }}</h3>
+        <p>{{ announcement.content }}</p>
+        <p>Date: {{ announcement.date }}</p>
+        <button (click)="deleteAnnouncement(announcement.announcement_id)">Delete</button>
+      </li>
+    </ul>
+  
+    <h2>Create Announcement</h2>
+    <form (submit)="createAnnouncement()">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" [(ngModel)]="newAnnouncement.title" name="title" required>
+      </div>
+      <div>
+        <label for="content">Content:</label>
+        <textarea id="content" [(ngModel)]="newAnnouncement.content" name="content" required></textarea>
+      </div>
+      <div>
+        <label for="date">Date:</label>
+        <input type="text" id="date" [(ngModel)]="newAnnouncement.date" name="date" required>
+      </div>
+      <div>
+        <button type="submit">Create</button>
+      </div>
+    </form>
+  </div>
+  

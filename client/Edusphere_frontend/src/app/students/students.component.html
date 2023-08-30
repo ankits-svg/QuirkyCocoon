@@ -1,64 +1,44 @@
-<h2>Add Student</h2>
-<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
-  <label>
-    Name:
-    <input type="text" formControlName="name" />
-  </label>
-  <br />
-
-  <label>
-    Student ID:
-    <input type="text" formControlName="studentId" />
-  </label>
-  <br />
-
-  <label>Gender:</label>
-  <label>
-    <input type="radio" value="Male" formControlName="gender" /> Male
-  </label>
-  <label>
-    <input type="radio" value="Female" formControlName="gender" /> Female
-  </label>
-  <label>
-    <input type="radio" value="Other" formControlName="gender" /> Other
-  </label>
-  <br />
-
-  <label>
-    Date of Birth:
-    <input type="date" formControlName="dob" />
-  </label>
-  <br />
-
-  <label>
-    Major:
-    <select formControlName="major">
-      <option value="Computer Science">Computer Science</option>
-      <option value="Engineering">Engineering</option>
-      <option value="Business">Business</option>
-      <!-- Add other options here -->
-    </select>
-  </label>
-  <br />
-
-  <label>
-    Email:
-    <input type="email" formControlName="email" />
-  </label>
-  <br />
-
-  <label>
-    Contact Number:
-    <input type="text" formControlName="contactNumber" />
-  </label>
-  <br />
-
-  <button type="submit">Add Student</button>
-</form>
-<h2>Students</h2>
-<ul>
-  <li *ngFor="let student of students">
-    {{ student.name }} ({{ student.major }}) - {{ student.email }}
+<div *ngFor="let student of students">
+  <div *ngIf="editingStudent && editingStudent.student_id === student.student_id">
+    <!-- Form for editing student -->
+    <form (ngSubmit)="updateStudent()">
+      <label for="editStudentName">Name</label>
+      <input type="text" id="editStudentName" [(ngModel)]="editingStudent.student_name" name="editStudentName" required>
+      <label for="editStudentGender">Gender</label>
+      <input type="text" id="editStudentGender" [(ngModel)]="editingStudent.student_gender" name="editStudentGender" required>
+      <label for="editStudentDOB">Date of Birth</label>
+      <input type="text" id="editStudentDOB" [(ngModel)]="editingStudent.student_dob" name="editStudentDOB" required>
+      <label for="editStudentEmail">Email</label>
+      <input type="email" id="editStudentEmail" [(ngModel)]="editingStudent.student_email" name="editStudentEmail" required>
+      <label for="editStudentContact">Contact Number</label>
+      <input type="text" id="editStudentContact" [(ngModel)]="editingStudent.student_contact" name="editStudentContact" required>
+      <button type="submit">Update</button>
+      <button type="button" (click)="cancelEditing()">Cancel</button>
+    </form>
+  </div>
+  <div *ngIf="editingStudent?.student_id !== student.student_id">
+    <!-- Display student details -->
+    <p>{{ student.student_name }}</p>
+    <p>{{ student.student_gender }}</p>
+    <p>{{ student.student_dob }}</p>
+    <p>{{ student.student_email }}</p>
+    <p>{{ student.student_contact }}</p>
+    <button (click)="editStudent(student)">Edit</button>
     <button (click)="deleteStudent(student.student_id)">Delete</button>
-  </li>
-</ul>
+  </div>
+</div>
+
+<!-- Form for creating new student -->
+<form (ngSubmit)="createStudent()">
+  <label for="newStudentName">Name</label>
+  <input type="text" id="newStudentName" [(ngModel)]="newStudent.student_name" name="newStudentName" required>
+  <label for="newStudentGender">Gender</label>
+  <input type="text" id="newStudentGender" [(ngModel)]="newStudent.student_gender" name="newStudentGender" required>
+  <label for="newStudentDOB">Date of Birth</label>
+  <input type="text" id="newStudentDOB" [(ngModel)]="newStudent.student_dob" name="newStudentDOB" required>
+  <label for="newStudentEmail">Email</label>
+  <input type="email" id="newStudentEmail" [(ngModel)]="newStudent.student_email" name="newStudentEmail" required>
+  <label for="newStudentContact">Contact Number</label>
+  <input type="text" id="newStudentContact" [(ngModel)]="newStudent.student_contact" name="newStudentContact" required>
+  <button type="submit">Create</button>
+</form>

@@ -1,1 +1,25 @@
-<p>courses works!</p>
+<div class="courses">
+    <h2>Courses</h2>
+<!-- <ul>
+  <li *ngFor="let course of courses">
+    <span *ngIf="editingCourse.course_id !== course.course_id">{{ course.title }}</span>
+    <input
+      *ngIf="editingCourse.course_id === course.course_id"
+      type="text"
+      [(ngModel)]="editingCourse.title"
+      name="editCourseTitle"
+    />
+    <button *ngIf="editingCourse.course_id !== course.course_id" (click)="editCourse(course)">Edit</button>
+    <button *ngIf="editingCourse.course_id === course.course_id" (click)="updateCourse()">Save</button>
+    <button *ngIf="editingCourse.course_id === course.course_id" (click)="cancelEdit()">Cancel</button>
+    <button (click)="deleteCourse(course.course_id)">Delete</button>
+  </li>
+</ul> -->
+
+    <div>
+      <label for="newCourseTitle">New Course Title:</label>
+      <input type="text" id="newCourseTitle" [(ngModel)]="newCourse.title" name="newCourseTitle" required>
+      <button (click)="createCourse()">Create Course</button>
+    </div>
+  </div>
+  

@@ -1,69 +1,60 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { Student } from './student.model';
+import { StudentService } from './student.service';
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css'],
+  styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements OnInit {
-  studentForm: FormGroup;
-  students: any[] = [];
+  students: Student[] = [];
+  newStudent: Student = new Student();
+  editingStudent: Student | null = null;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
-    this.studentForm = this.fb.group({
-      name: ['', Validators.required],
-      gender: ['', Validators.required],
-      date_of_birth: ['', Validators.required],
-      major: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      contact_number: ['', Validators.required],
-    });
-  }
+  constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
-    this.fetchStudents();
+    this.loadStudents();
   }
 
-  fetchStudents() {
-    this.http.get<any[]>('http://localhost:42/students/').subscribe(
-      (students) => {
-        this.students = students;
-      },
-      (error) => {
-        console.error(error);
+  loadStudents(): void {
+    this.studentService.getAllStudents().subscribe(
+      students => this.students = students
+    );
+  }
+
+  createStudent(): void {
+    this.studentService.createStudent(this.newStudent).subscribe(
+      () => {
+        this.loadStudents();
+        this.newStudent = new Student(); // Clear form data
       }
     );
   }
 
-  onSubmit() {
-    if (this.studentForm.valid) {
-      const formData = this.studentForm.value;
-      this.http.post('http://localhost:4200/students/', formData).subscribe(
+  editStudent(student: Student): void {
+    this.editingStudent = { ...student };
+  }
+
+  updateStudent(): void {
+    if (this.editingStudent) {
+      this.studentService.updateStudent(this.editingStudent).subscribe(
         () => {
-          this.fetchStudents();
-          this.studentForm.reset();
-        },
-        (error) => {
-          console.error(error);
+          this.loadStudents();
+          this.editingStudent = null; // Clear editing state
         }
       );
     }
   }
 
-  deleteStudent(studentId: number) {
-    this.http
-      .delete(`http://localhost:8000/students/${studentId}/delete/`)
-      .pipe(
-        catchError((error) => {
-          console.error("Error deleting student:", error);
-          return []; // Return an empty array or any other appropriate value
-        })
-      )
-      .subscribe(() => {
-        this.fetchStudents();
-      });
+  cancelEditing(): void {
+    this.editingStudent = null; // Clear editing state
+  }
+
+  deleteStudent(studentId: number): void {
+    this.studentService.deleteStudent(studentId).subscribe(
+      () => this.loadStudents()
+    );
   }
 }

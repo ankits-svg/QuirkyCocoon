@@ -1,1 +1,70 @@
-<p>submissions works!</p>
+<div class="container">
+    <h2>Submissions</h2>
+  
+    <!-- Create Form -->
+    <form (ngSubmit)="createSubmission()">
+      <h3>Create Submission</h3>
+      <div class="form-group">
+        <label for="assignment">Assignment:</label>
+        <input type="text" id="assignment" [(ngModel)]="newSubmission.assignment" name="assignment" required>
+      </div>
+      <div class="form-group">
+        <label for="student">Student:</label>
+        <input type="text" id="student" [(ngModel)]="newSubmission.student" name="student" required>
+      </div>
+      <div class="form-group">
+        <label for="submissionDate">Submission Date:</label>
+        <input type="date" id="submissionDate" [(ngModel)]="newSubmission.submission_date" name="submissionDate" required>
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="text" id="status" [(ngModel)]="newSubmission.status" name="status" required>
+      </div>
+      <div class="form-group">
+        <label for="remarks">Remarks:</label>
+        <textarea id="remarks" [(ngModel)]="newSubmission.remarks" name="remarks"></textarea>
+      </div>
+      <button type="submit">Create</button>
+    </form>
+  
+    <!-- Display Submissions -->
+    <h3>Submissions List</h3>
+    <ul>
+      <li *ngFor="let submission of submissions">
+        <span>{{ submission.assignment }}</span> -
+        <span>{{ submission.student }}</span> -
+        <span>{{ submission.submission_date }}</span> -
+        <span>{{ submission.status }}</span> -
+        <span>{{ submission.remarks }}</span>
+        <button (click)="editSubmission(submission)">Edit</button>
+        <button (click)="deleteSubmission(submission.submission_id)">Delete</button>
+      </li>
+    </ul>
+  
+    <!-- Edit Form -->
+    <form (ngSubmit)="updateSubmission()">
+      <h3>Edit Submission</h3>
+      <div class="form-group">
+        <label for="editAssignment">Assignment:</label>
+        <input type="text" id="editAssignment" [(ngModel)]="newSubmission.assignment" name="editAssignment" required>
+      </div>
+      <div class="form-group">
+        <label for="editStudent">Student:</label>
+        <input type="text" id="editStudent" [(ngModel)]="newSubmission.student" name="editStudent" required>
+      </div>
+      <div class="form-group">
+        <label for="editSubmissionDate">Submission Date:</label>
+        <input type="date" id="editSubmissionDate" [(ngModel)]="newSubmission.submission_date" name="editSubmissionDate" required>
+      </div>
+      <div class="form-group">
+        <label for="editStatus">Status:</label>
+        <input type="text" id="editStatus" [(ngModel)]="newSubmission.status" name="editStatus" required>
+      </div>
+      <div class="form-group">
+        <label for="editRemarks">Remarks:</label>
+        <textarea id="editRemarks" [(ngModel)]="newSubmission.remarks" name="editRemarks"></textarea>
+      </div>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  
