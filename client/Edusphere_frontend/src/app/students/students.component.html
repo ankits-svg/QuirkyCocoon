@@ -36,9 +36,36 @@
   <input type="text" id="newStudentGender" [(ngModel)]="newStudent.student_gender" name="newStudentGender" required>
   <label for="newStudentDOB">Date of Birth</label>
   <input type="text" id="newStudentDOB" [(ngModel)]="newStudent.student_dob" name="newStudentDOB" required>
+  <label for="newStudentMajor">Major Area</label>
+  <input type="text" id="newStudentMajor" [(ngModel)]="newStudent.student_major" name="newStudentMajor" required>
   <label for="newStudentEmail">Email</label>
   <input type="email" id="newStudentEmail" [(ngModel)]="newStudent.student_email" name="newStudentEmail" required>
   <label for="newStudentContact">Contact Number</label>
   <input type="text" id="newStudentContact" [(ngModel)]="newStudent.student_contact" name="newStudentContact" required>
   <button type="submit">Create</button>
 </form>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Date of Birth</th>
+      <th>Major</th>
+      <th>Email</th>
+      <th>Contact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.student_id }}</td>
+      <td>{{ student.student_name }}</td>
+      <td>{{ student.student_gender }}</td>
+      <td>{{ student.student_dob }}</td>
+      <td>{{ student.student_major }}</td>
+      <td>{{ student.student_email }}</td>
+      <td>{{ student.student_contact }}</td>
+    </tr>
+  </tbody>
+</table>
+

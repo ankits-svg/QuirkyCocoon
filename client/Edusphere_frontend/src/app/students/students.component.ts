@@ -11,7 +11,8 @@ export class StudentsComponent implements OnInit {
   students: Student[] = [];
   newStudent: Student = new Student();
   editingStudent: Student | null = null;
-
+  
+  
   constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
@@ -20,14 +21,23 @@ export class StudentsComponent implements OnInit {
 
   loadStudents(): void {
     this.studentService.getAllStudents().subscribe(
-      students => this.students = students
+      res => {
+        this.students = res
+        console.log(res)
+        console.log("data:",this.students)
+      }
     );
+ 
+
   }
 
   createStudent(): void {
+    console.log("create:",this.newStudent)
+    
     this.studentService.createStudent(this.newStudent).subscribe(
-      () => {
-        this.loadStudents();
+      (res) => {
+        console.log(res)
+        // this.loadStudents();
         this.newStudent = new Student(); // Clear form data
       }
     );
