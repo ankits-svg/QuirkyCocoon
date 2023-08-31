@@ -26,6 +26,17 @@ def get_student_profile(request, student_id):
     serializer = StudentSerializer(student)
     return Response(serializer.data)
 
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def get_all_student_profile(request):
+    try:
+        student = Student.objects.all()
+    except Student.DoesNotExist:
+        return Response({'error': 'Student profile not found'}, status=404)
+
+    serializer = StudentSerializer(student,many=True)
+    return Response(serializer.data)
+
 @api_view(['PUT'])
 # @permission_classes([IsAuthenticated])
 def update_student_profile(request, student_id):

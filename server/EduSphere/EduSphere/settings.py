@@ -86,8 +86,12 @@ WSGI_APPLICATION = 'EduSphere.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ankit',
+        'USER': 'root',
+        'PASSWORD': 'ankits745',
+        'HOST': '127.0.0.1',  # Usually 'localhost'
+        # 'PORT': '8000',  # Default MySQL port is 3306
     }
 }
 
@@ -134,7 +138,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 APPEND_SLASH = False
 
-CORS_ALLOW_ALL_ORIGINS = False  # Set this to False to allow only specific origins
-CORS_ALLOWED_ORIGINS = [
+# CORS_ORIGIN_ALLOW_ALL=True
+# CORS_ALLOW_CREDENTIALS=True
+CORS_ALLOW_ALL_ORIGINS = True  # Set this to False to allow only specific origins
+CORS_ALLOW_ORIGINS = [
     "http://localhost:4200",  # Add your Angular app's URL here
 ]
