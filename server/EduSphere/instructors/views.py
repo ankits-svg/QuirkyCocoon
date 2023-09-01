@@ -1,55 +1,37 @@
-from rest_framework.decorators import api_view, permission_classes
-# from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from .models import Instructor
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
 from .serializers import InstructorSerializer
+from .models import Instructor
 
-@api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-def create_instructor_profile(request):
-    if request.method == 'POST':
-        serializer = InstructorSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+@csrf_exempt
+def instructorApi(request,id=0):
+    if request.method=='GET':
+        instructor = Instructor.objects.all()
+        instructor_serializer=InstructorSerializer(instructor,many=True)
+        return JsonResponse(instructor_serializer.data,safe=False)
+    
 
-@api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-def get_instructor_profile(request, instructor_id):
-    try:
-        instructor = Instructor.objects.get(pk=instructor_id)
-    except Instructor.DoesNotExist:
-        return Response({'error': 'Instructor profile not found'}, status=404)
+    elif request.method=='POST':
+        instructor_data=JSONParser().parse(request)
+        instructor_serializer=InstructorSerializer(data=instructor_data)
+        if instructor_serializer.is_valid():
+            instructor_serializer.save()
+            return JsonResponse("Added Successfully",safe=False)
+        return JsonResponse(instructor_serializer.errors,safe=False)
+    
 
-    serializer = InstructorSerializer(instructor)
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-# @permission_classes([IsAuthenticated])
-def update_instructor_profile(request, instructor_id):
-    try:
-        instructor = Instructor.objects.get(pk=instructor_id)
-    except Instructor.DoesNotExist:
-        return Response({'error': 'Instructor profile not found'}, status=404)
-
-    if request.method == 'PUT':
-        serializer = InstructorSerializer(instructor, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    else:
-        return Response({'error': 'Method not allowed'}, status=405)
-
-@api_view(['DELETE'])
-# @permission_classes([IsAuthenticated])
-def delete_instructor_profile(request, instructor_id):
-    try:
-        instructor = Instructor.objects.get(pk=instructor_id)
-    except Instructor.DoesNotExist:
-        return Response({'error': 'Instructor profile not found'}, status=404)
-
-    if request.method == 'DELETE':
+    elif request.method=='PUT':
+        instructor_data=JSONParser().parse(request)
+        instructor=Instructor.objects.get(instructor_id=id)
+        instructor_serializer=InstructorSerializer(instructor,data=instructor_data)
+        if instructor_serializer.is_valid():
+            instructor_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
+    
+    
+    elif request.method=='DELETE':
+        instructor=Instructor.objects.get(instructor_id=id)
         instructor.delete()
-        return Response(status=204)
+        return JsonResponse("Deleted Successfully",safe=False)

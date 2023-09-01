@@ -1,56 +1,37 @@
-from rest_framework.decorators import api_view, permission_classes
-# from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-
-from .models import Department
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
 from .serializers import DepartmentSerializer
+from .models import Department
 
-@api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-def create_department(request):
-    if request.method == 'POST':
-        serializer = DepartmentSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+@csrf_exempt
+def departmentApi(request,id=0):
+    if request.method=='GET':
+        department = Department.objects.all()
+        department_serializer=DepartmentSerializer(department,many=True)
+        return JsonResponse(department_serializer.data,safe=False)
+    
 
-@api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-def get_department(request, department_id):
-    try:
-        department = Department.objects.get(pk=department_id)
-    except Department.DoesNotExist:
-        return Response({'error': 'Department not found'}, status=404)
+    elif request.method=='POST':
+        department_data=JSONParser().parse(request)
+        department_serializer=DepartmentSerializer(data=department_data)
+        if department_serializer.is_valid():
+            department_serializer.save()
+            return JsonResponse("Added Successfully",safe=False)
+        return JsonResponse(department_serializer.errors,safe=False)
+    
 
-    serializer = DepartmentSerializer(department)
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-# @permission_classes([IsAuthenticated])
-def update_department(request, department_id):
-    try:
-        department = Department.objects.get(pk=department_id)
-    except Department.DoesNotExist:
-        return Response({'error': 'Department not found'}, status=404)
-
-    if request.method == 'PUT':
-        serializer = DepartmentSerializer(department, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    else:
-        return Response({'error': 'Method not allowed'}, status=405)
-
-@api_view(['DELETE'])
-# @permission_classes([IsAuthenticated])
-def delete_department(request, department_id):
-    try:
-        department = Department.objects.get(pk=department_id)
-    except Department.DoesNotExist:
-        return Response({'error': 'Department not found'}, status=404)
-
-    if request.method == 'DELETE':
+    elif request.method=='PUT':
+        department_data=JSONParser().parse(request)
+        department=Department.objects.get(department_id=id)
+        department_serializer=DepartmentSerializer(department,data=department_data)
+        if department_serializer.is_valid():
+            department_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
+    
+    
+    elif request.method=='DELETE':
+        department=Department.objects.get(department_id=id)
         department.delete()
-        return Response(status=204)
+        return JsonResponse("Deleted Successfully",safe=False)

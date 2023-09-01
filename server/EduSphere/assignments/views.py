@@ -1,56 +1,39 @@
-from rest_framework.decorators import api_view, permission_classes
-# from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-
-from .models import Assignment
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
 from .serializers import AssignmentSerializer
+from .models import Assignment
 
-@api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-def create_assignment(request):
-    if request.method == 'POST':
-        serializer = AssignmentSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+@csrf_exempt
+def assignmentApi(request,id=0):
+    if request.method=='GET':
+        assignment = Assignment.objects.all()
+        assignment_serializer=AssignmentSerializer(assignment,many=True)
+        return JsonResponse(assignment_serializer.data,safe=False)
+    
 
-@api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-def get_assignment(request, assignment_id):
-    try:
-        assignment = Assignment.objects.get(pk=assignment_id)
-    except Assignment.DoesNotExist:
-        return Response({'error': 'Assignment not found'}, status=404)
+    elif request.method=='POST':
+        assignment_data=JSONParser().parse(request)
+        assignment_serializer=AssignmentSerializer(data=assignment_data)
+        if assignment_serializer.is_valid():
+            course_id = assignment_data.get('course_id')
+            assignment_data['course'] = course_id
+            assignment_serializer.save()
+            return JsonResponse("Added Successfully",safe=False)
+        return JsonResponse(assignment_serializer.errors,safe=False)
+    
 
-    serializer = AssignmentSerializer(assignment)
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-# @permission_classes([IsAuthenticated])
-def update_assignment(request, assignment_id):
-    try:
-        assignment = Assignment.objects.get(pk=assignment_id)
-    except Assignment.DoesNotExist:
-        return Response({'error': 'Assignment not found'}, status=404)
-
-    if request.method == 'PUT':
-        serializer = AssignmentSerializer(assignment, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    else:
-        return Response({'error': 'Method not allowed'}, status=405)
-
-@api_view(['DELETE'])
-# @permission_classes([IsAuthenticated])
-def delete_assignment(request, assignment_id):
-    try:
-        assignment = Assignment.objects.get(pk=assignment_id)
-    except Assignment.DoesNotExist:
-        return Response({'error': 'Assignment not found'}, status=404)
-
-    if request.method == 'DELETE':
+    elif request.method=='PUT':
+        assignment_data=JSONParser().parse(request)
+        assignment=Assignment.objects.get(assignment_id=id)
+        assignment_serializer=AssignmentSerializer(assignment,data=assignment_data)
+        if assignment_serializer.is_valid():
+            assignment_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
+    
+    
+    elif request.method=='DELETE':
+        assignment=Assignment.objects.get(assignment_id=id)
         assignment.delete()
-        return Response(status=204)
+        return JsonResponse("Deleted Successfully",safe=False)

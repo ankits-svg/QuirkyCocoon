@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import create_department, get_department, update_department, delete_department
+from . import views
 
 urlpatterns = [
-    path('departments/', create_department, name='create-department'),
-    path('departments/<int:department_id>/', get_department, name='get-department'),
-    path('departments/<int:department_id>/update', update_department, name='update-department'),
-    path('departments/<int:department_id>/delete', delete_department, name='delete-department'),
+    path('departments', views.departmentApi, name='department-list'),
+    path('departments/<int:id>', views.departmentApi, name='department-detail'),
+    path('departments/create', views.departmentApi, name='department-create'),
+    path('departments/update/<int:id>', views.departmentApi, name='department-update'),
+    path('departments/delete/<int:id>', views.departmentApi, name='department-delete'),
 ]

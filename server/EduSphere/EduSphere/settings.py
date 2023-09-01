@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'students',
+    'students.apps.StudentsConfig',
     'instructors',
     'courses',
     'enrollments',
@@ -138,9 +138,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 APPEND_SLASH = False
 
-# CORS_ORIGIN_ALLOW_ALL=True
-# CORS_ALLOW_CREDENTIALS=True
-CORS_ALLOW_ALL_ORIGINS = True  # Set this to False to allow only specific origins
-CORS_ALLOW_ORIGINS = [
-    "http://localhost:4200",  # Add your Angular app's URL here
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_HEADERS=True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
 ]

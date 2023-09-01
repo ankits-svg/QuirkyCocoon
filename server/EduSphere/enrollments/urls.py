@@ -1,7 +1,16 @@
 from django.urls import path
-from .views import enroll_student_in_course, get_student_enrollments
+from . import views
 
 urlpatterns = [
-    path('enrollments/', enroll_student_in_course, name='enroll-student-in-course'),
-    path('students/<int:student_id>/enrollments/', get_student_enrollments, name='get-student-enrollments'),
+    path('enrollments', views.enrollmentApi, name='enrollment-list'),
+    path('enrollments/create', views.enrollmentApi, name='enrollment-detail'),
 ]
+
+
+# urlpatterns = [
+#     path('students', views.studentApi, name='student-list'),
+#     path('students/<int:id>', views.studentApi, name='student-detail'),
+#     path('students/create', views.studentApi, name='student-create'),
+#     path('students/update/<int:id>', views.studentApi, name='student-update'),
+#     path('students/delete/<int:id>', views.studentApi, name='student-delete'),
+# ]

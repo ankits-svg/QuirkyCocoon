@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import create_submission, get_submission, update_submission, delete_submission
-
+from . import views
 urlpatterns = [
-    path('submissions/', create_submission, name='create-submission'),
-    path('submissions/<int:submission_id>/', get_submission, name='get-submission'),
-    path('submissions/<int:submission_id>/update/', update_submission, name='update-submission'),
-    path('submissions/<int:submission_id>/delete/', delete_submission, name='delete-submission'),
+    path('submissions', views.submissionApi, name='submission-list'),
+    path('submissions/<int:id>', views.submissionApi, name='submission-detail'),
+    path('submissions/create', views.submissionApi, name='submission-create'),
+    path('submissions/update/<int:id>', views.submissionApi, name='submission-update'),
+    path('submissions/delete/<int:id>', views.submissionApi, name='submission-delete'),
 ]

@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import get_all_student_profile, create_student_profile, get_student_profile, update_student_profile, delete_student_profile
+from . import views
 
 urlpatterns = [
-    path('students', get_all_student_profile, name='get-all-student-profile'),
-    path('students/create', create_student_profile, name='create-student-profile'),
-    path('students/<int:student_id>', get_student_profile, name='get-student-profile'),
-    path('students/<int:student_id>/update', update_student_profile, name='update-student-profile'),
-    path('students/<int:student_id>/delete', delete_student_profile, name='delete-student-profile'),
+    path('students', views.studentApi, name='student-list'),
+    path('students/<int:id>', views.studentApi, name='student-detail'),
+    path('students/create', views.studentApi, name='student-create'),
+    path('students/update/<int:id>', views.studentApi, name='student-update'),
+    path('students/delete/<int:id>', views.studentApi, name='student-delete'),
 ]

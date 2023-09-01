@@ -1,56 +1,37 @@
-from rest_framework.decorators import api_view, permission_classes
-# from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-
-from .models import Course
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.parsers import JSONParser
+from django.http.response import JsonResponse
 from .serializers import CourseSerializer
+from .models import Course
 
-@api_view(['POST'])
-# @permission_classes([IsAuthenticated])
-def create_course(request):
-    if request.method == 'POST':
-        serializer = CourseSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+@csrf_exempt
+def courseApi(request,id=0):
+    if request.method=='GET':
+        course = Course.objects.all()
+        course_serializer=CourseSerializer(course,many=True)
+        return JsonResponse(course_serializer.data,safe=False)
+    
 
-@api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-def get_course(request, course_id):
-    try:
-        course = Course.objects.get(pk=course_id)
-    except Course.DoesNotExist:
-        return Response({'error': 'Course not found'}, status=404)
+    elif request.method=='POST':
+        course_data=JSONParser().parse(request)
+        course_serializer=CourseSerializer(data=course_data)
+        if course_serializer.is_valid():
+            course_serializer.save()
+            return JsonResponse("Added Successfully",safe=False)
+        return JsonResponse(course_serializer.errors,safe=False)
+    
 
-    serializer = CourseSerializer(course)
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-# @permission_classes([IsAuthenticated])
-def update_course(request, course_id):
-    try:
-        course = Course.objects.get(pk=course_id)
-    except Course.DoesNotExist:
-        return Response({'error': 'Course not found'}, status=404)
-
-    if request.method == 'PUT':
-        serializer = CourseSerializer(course, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    else:
-        return Response({'error': 'Method not allowed'}, status=405)
-
-@api_view(['DELETE'])
-# @permission_classes([IsAuthenticated])
-def delete_course(request, course_id):
-    try:
-        course = Course.objects.get(pk=course_id)
-    except Course.DoesNotExist:
-        return Response({'error': 'Course not found'}, status=404)
-
-    if request.method == 'DELETE':
+    elif request.method=='PUT':
+        course_data=JSONParser().parse(request)
+        course=Course.objects.get(course_id=id)
+        course_serializer=CourseSerializer(course,data=course_data)
+        if course_serializer.is_valid():
+            course_serializer.save()
+            return JsonResponse("Updated Successfully",safe=False)
+        return JsonResponse("Failed to Update")
+    
+    
+    elif request.method=='DELETE':
+        course=Course.objects.get(course_id=id)
         course.delete()
-        return Response(status=204)
+        return JsonResponse("Deleted Successfully",safe=False)
