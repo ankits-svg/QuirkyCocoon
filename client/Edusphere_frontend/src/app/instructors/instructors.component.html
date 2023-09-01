@@ -1,61 +1,141 @@
-<div class="container">
-    <h1>Instructors Management</h1>
-    
-    <!-- Add a form for creating instructors -->
-    <form (submit)="createInstructor()">
-      <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="newInstructor.name" name="name" required>
-      
-      <label for="gender">Gender:</label>
-      <label>
-        <input type="radio" id="male" [(ngModel)]="newInstructor.gender" name="gender" value="Male" required>
-        Male
-      </label>
-      <label>
-        <input type="radio" id="female" [(ngModel)]="newInstructor.gender" name="gender" value="Female">
-        Female
-      </label>
-      <label>
-        <input type="radio" id="other" [(ngModel)]="newInstructor.gender" name="gender" value="Other">
-        Other
-      </label>
-      
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" [(ngModel)]="newInstructor.dateOfBirth" name="dob" required>
-      
-      <label for="department">Department:</label>
-      <select id="department" [(ngModel)]="newInstructor.department" name="department" required>
-        <option value="Science">Science</option>
-        <option value="Arts">Arts</option>
-        <option value="Engineering">Engineering</option>
-        <!-- Add more options as needed -->
-      </select>
-      
-      <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="newInstructor.email" name="email" required>
-      
-      <label for="contact">Contact Number:</label>
-      <input type="text" id="contact" [(ngModel)]="newInstructor.contactNumber" name="contact" required>
-      
-      <button type="submit">Create Instructor</button>
+<div class="container mt-4">
+  <h1>Instructor Management</h1>
+  <div class="card">
+    <form>
+      <div class="form-group">
+        <label>Instructor Name</label>
+        <input
+          type="text"
+          [(ngModel)]="name"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="instructorname"
+          name="instructorname"
+          placeholder="Enter Instructor Name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <input
+          type="text"
+          [(ngModel)]="gender"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="instructorgender"
+          name="instructorgender"
+          placeholder="Enter Instructor Gender"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input
+          type="text"
+          [(ngModel)]="date_of_birth"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="date_of_birth"
+          name="date_of_birth"
+          placeholder="Enter Date of Birth"
+        />
+      </div>
+      <div class="form-group">
+        <label>Department</label>
+        <input
+          type="text"
+          [(ngModel)]="department"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="department"
+          name="department"
+          placeholder="Enter Department"
+        />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="text"
+          [(ngModel)]="email"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter Your mail Id"
+        />
+      </div>
+      <div class="form-group">
+        <label>Contact</label>
+        <input
+          type="text"
+          [(ngModel)]="contact_number"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="contact_number"
+          name="contact_number"
+          placeholder="Enter contact Number"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        (click)="saveRecords()"
+      >
+        Save
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-warning mt-4"
+        (click)="UpdateRecords()"
+      >
+        Update
+      </button>
     </form>
-    
-    <!-- Display the list of instructors -->
-    <h2>Instructors List</h2>
-    <ul>
-      <li *ngFor="let instructor of instructors">
-        {{ instructor.name }} ({{ instructor.email }})
-        <button (click)="editInstructor(instructor)">Edit</button>
-        <button (click)="deleteInstructor(instructor.id)">Delete</button>
-      </li>
-    </ul>
-    <!-- Add an edit form -->
-<form (submit)="updateInstructor()">
-    <label for="name">Name:</label>
-    <input type="text" id="name" [(ngModel)]="newInstructor.name" name="name" required>
-    <!-- Other fields similar to the create form -->
-    <button type="submit">Update Instructor</button>
-  </form>
-  
   </div>
-  
+</div>
+
+<div>
+  <div class="container mt-4">
+    <h1>Instructor Table</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Date of Birth</th>
+          
+          <th scope="col">Department</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let StudentItem of InstructorArray">
+          <td>{{ StudentItem.name }}</td>
+          <td>{{ StudentItem.gender }}</td>
+          <td>{{ StudentItem.date_of_birth }}</td>
+          <td>{{ StudentItem.department }}</td>
+          <td>{{ StudentItem.email }}</td>
+          <td>{{ StudentItem.contact_number }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="setUpdate(StudentItem)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="setDelete(StudentItem)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

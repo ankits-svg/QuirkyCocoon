@@ -7,6 +7,6 @@ export class Enrollment {
     student_id: number=0;
     course_id: number=0;
     enrollment_date: string='';
-    student:Student = new Student();
+    // student:Student = new Student();
   }
   

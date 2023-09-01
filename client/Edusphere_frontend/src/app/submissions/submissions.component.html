@@ -1,70 +1,128 @@
-<div class="container">
-    <h2>Submissions</h2>
-  
-    <!-- Create Form -->
-    <form (ngSubmit)="createSubmission()">
-      <h3>Create Submission</h3>
+<div class="container mt-4">
+  <h1>Submission Field</h1>
+  <div class="card">
+    <form>
       <div class="form-group">
-        <label for="assignment">Assignment:</label>
-        <input type="text" id="assignment" [(ngModel)]="newSubmission.assignment" name="assignment" required>
+        <label>Assignment Id</label>
+        <input
+          type="text"
+          [(ngModel)]="assignment"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="assignment"
+          name="assignment"
+          placeholder="Enter Assignment Id"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Student Id</label>
+        <input
+          type="text"
+          [(ngModel)]="student"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="student"
+          name="student"
+          placeholder="Enter Student"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Submission Date</label>
+        <input
+          type="date"
+          [(ngModel)]="submission_date"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="submission_date"
+          name="submission_date"
+          placeholder="Enter Submission Date"
+        />
       </div>
       <div class="form-group">
-        <label for="student">Student:</label>
-        <input type="text" id="student" [(ngModel)]="newSubmission.student" name="student" required>
+        <label>Status Of Assignment</label>
+        <input
+          type="text"
+          [(ngModel)]="status"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="status"
+          name="status"
+          placeholder="Enter Status In True/False"
+        />
       </div>
       <div class="form-group">
-        <label for="submissionDate">Submission Date:</label>
-        <input type="date" id="submissionDate" [(ngModel)]="newSubmission.submission_date" name="submissionDate" required>
+        <label>Any Remarks</label>
+        <input
+          type="text"
+          [(ngModel)]="remarks"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="remarks"
+          name="remarks"
+          placeholder="Write Any Remarks You Want To Add"
+        />
       </div>
-      <div class="form-group">
-        <label for="status">Status:</label>
-        <input type="text" id="status" [(ngModel)]="newSubmission.status" name="status" required>
-      </div>
-      <div class="form-group">
-        <label for="remarks">Remarks:</label>
-        <textarea id="remarks" [(ngModel)]="newSubmission.remarks" name="remarks"></textarea>
-      </div>
-      <button type="submit">Create</button>
-    </form>
-  
-    <!-- Display Submissions -->
-    <h3>Submissions List</h3>
-    <ul>
-      <li *ngFor="let submission of submissions">
-        <span>{{ submission.assignment }}</span> -
-        <span>{{ submission.student }}</span> -
-        <span>{{ submission.submission_date }}</span> -
-        <span>{{ submission.status }}</span> -
-        <span>{{ submission.remarks }}</span>
-        <button (click)="editSubmission(submission)">Edit</button>
-        <button (click)="deleteSubmission(submission.submission_id)">Delete</button>
-      </li>
-    </ul>
-  
-    <!-- Edit Form -->
-    <form (ngSubmit)="updateSubmission()">
-      <h3>Edit Submission</h3>
-      <div class="form-group">
-        <label for="editAssignment">Assignment:</label>
-        <input type="text" id="editAssignment" [(ngModel)]="newSubmission.assignment" name="editAssignment" required>
-      </div>
-      <div class="form-group">
-        <label for="editStudent">Student:</label>
-        <input type="text" id="editStudent" [(ngModel)]="newSubmission.student" name="editStudent" required>
-      </div>
-      <div class="form-group">
-        <label for="editSubmissionDate">Submission Date:</label>
-        <input type="date" id="editSubmissionDate" [(ngModel)]="newSubmission.submission_date" name="editSubmissionDate" required>
-      </div>
-      <div class="form-group">
-        <label for="editStatus">Status:</label>
-        <input type="text" id="editStatus" [(ngModel)]="newSubmission.status" name="editStatus" required>
-      </div>
-      <div class="form-group">
-        <label for="editRemarks">Remarks:</label>
-        <textarea id="editRemarks" [(ngModel)]="newSubmission.remarks" name="editRemarks"></textarea>
-      </div>
-      <button type="submit">Update</button>
+      
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        (click)="saveRecords()"
+      >
+        Submit
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-warning mt-4"
+        (click)="UpdateRecords()"
+      >
+        Update
+      </button>
     </form>
   </div>
-  
+</div>
+
+<div>
+  <div class="container mt-4">
+    <h1>Submission Details</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Assignment ID</th>
+          <th scope="col">Student ID</th>
+          <th scope="col">Submission Date</th>
+          
+          <th scope="col">Status</th>
+          <th scope="col">Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let StudentItem of SubmissionArray">
+          <td>{{ StudentItem.assignment }}</td>
+          <td>{{ StudentItem.student }}</td>
+          <td>{{ StudentItem.submission_date }}</td>
+          <td>{{ StudentItem.status }}</td>
+          <td>{{ StudentItem.remarks }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="setUpdate(StudentItem)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="setDelete(StudentItem)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

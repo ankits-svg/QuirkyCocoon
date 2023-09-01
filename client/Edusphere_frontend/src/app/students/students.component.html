@@ -1,71 +1,141 @@
-<div *ngFor="let student of students">
-  <div *ngIf="editingStudent && editingStudent.student_id === student.student_id">
-    <!-- Form for editing student -->
-    <form (ngSubmit)="updateStudent()">
-      <label for="editStudentName">Name</label>
-      <input type="text" id="editStudentName" [(ngModel)]="editingStudent.student_name" name="editStudentName" required>
-      <label for="editStudentGender">Gender</label>
-      <input type="text" id="editStudentGender" [(ngModel)]="editingStudent.student_gender" name="editStudentGender" required>
-      <label for="editStudentDOB">Date of Birth</label>
-      <input type="text" id="editStudentDOB" [(ngModel)]="editingStudent.student_dob" name="editStudentDOB" required>
-      <label for="editStudentEmail">Email</label>
-      <input type="email" id="editStudentEmail" [(ngModel)]="editingStudent.student_email" name="editStudentEmail" required>
-      <label for="editStudentContact">Contact Number</label>
-      <input type="text" id="editStudentContact" [(ngModel)]="editingStudent.student_contact" name="editStudentContact" required>
-      <button type="submit">Update</button>
-      <button type="button" (click)="cancelEditing()">Cancel</button>
+<div class="container mt-4">
+  <h1>STUDENT Registation</h1>
+  <div class="card">
+    <form>
+      <div class="form-group">
+        <label>Student Name</label>
+        <input
+          type="text"
+          [(ngModel)]="name"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="studentname"
+          name="studentname"
+          placeholder="Enter Name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <input
+          type="text"
+          [(ngModel)]="gender"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="studentgender"
+          name="studentgender"
+          placeholder="Enter Gender"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input
+          type="text"
+          [(ngModel)]="date_of_birth"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="date_of_birth"
+          name="date_of_birth"
+          placeholder="Enter Date of Birth"
+        />
+      </div>
+      <div class="form-group">
+        <label>Major Course</label>
+        <input
+          type="text"
+          [(ngModel)]="major"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="major"
+          name="major"
+          placeholder="Enter Major Course"
+        />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="text"
+          [(ngModel)]="email"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter Your mail Id"
+        />
+      </div>
+      <div class="form-group">
+        <label>Contact</label>
+        <input
+          type="text"
+          [(ngModel)]="contact_number"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="contact_number"
+          name="contact_number"
+          placeholder="Enter contact Number"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        (click)="saveRecords()"
+      >
+        Save
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-warning mt-4"
+        (click)="UpdateRecords()"
+      >
+        Update
+      </button>
     </form>
-  </div>
-  <div *ngIf="editingStudent?.student_id !== student.student_id">
-    <!-- Display student details -->
-    <p>{{ student.student_name }}</p>
-    <p>{{ student.student_gender }}</p>
-    <p>{{ student.student_dob }}</p>
-    <p>{{ student.student_email }}</p>
-    <p>{{ student.student_contact }}</p>
-    <button (click)="editStudent(student)">Edit</button>
-    <button (click)="deleteStudent(student.student_id)">Delete</button>
   </div>
 </div>
 
-<!-- Form for creating new student -->
-<form (ngSubmit)="createStudent()">
-  <label for="newStudentName">Name</label>
-  <input type="text" id="newStudentName" [(ngModel)]="newStudent.student_name" name="newStudentName" required>
-  <label for="newStudentGender">Gender</label>
-  <input type="text" id="newStudentGender" [(ngModel)]="newStudent.student_gender" name="newStudentGender" required>
-  <label for="newStudentDOB">Date of Birth</label>
-  <input type="text" id="newStudentDOB" [(ngModel)]="newStudent.student_dob" name="newStudentDOB" required>
-  <label for="newStudentMajor">Major Area</label>
-  <input type="text" id="newStudentMajor" [(ngModel)]="newStudent.student_major" name="newStudentMajor" required>
-  <label for="newStudentEmail">Email</label>
-  <input type="email" id="newStudentEmail" [(ngModel)]="newStudent.student_email" name="newStudentEmail" required>
-  <label for="newStudentContact">Contact Number</label>
-  <input type="text" id="newStudentContact" [(ngModel)]="newStudent.student_contact" name="newStudentContact" required>
-  <button type="submit">Create</button>
-</form>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Gender</th>
-      <th>Date of Birth</th>
-      <th>Major</th>
-      <th>Email</th>
-      <th>Contact</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students">
-      <td>{{ student.student_id }}</td>
-      <td>{{ student.student_name }}</td>
-      <td>{{ student.student_gender }}</td>
-      <td>{{ student.student_dob }}</td>
-      <td>{{ student.student_major }}</td>
-      <td>{{ student.student_email }}</td>
-      <td>{{ student.student_contact }}</td>
-    </tr>
-  </tbody>
-</table>
-
+<div>
+  <div class="container mt-4">
+    <h1>Student Table</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Date of Birth</th>
+          
+          <th scope="col">Major Course</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let StudentItem of StudentArray">
+          <td>{{ StudentItem.name }}</td>
+          <td>{{ StudentItem.gender }}</td>
+          <td>{{ StudentItem.date_of_birth }}</td>
+          <td>{{ StudentItem.major }}</td>
+          <td>{{ StudentItem.email }}</td>
+          <td>{{ StudentItem.contact_number }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="setUpdate(StudentItem)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="setDelete(StudentItem)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

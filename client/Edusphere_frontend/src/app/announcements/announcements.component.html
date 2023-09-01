@@ -1,31 +1,131 @@
-<div class="announcements">
-    <h2>Announcements</h2>
-    <ul>
-      <li *ngFor="let announcement of announcements">
-        <h3>{{ announcement.title }}</h3>
-        <p>{{ announcement.content }}</p>
-        <p>Date: {{ announcement.date }}</p>
-        <button (click)="deleteAnnouncement(announcement.announcement_id)">Delete</button>
-      </li>
-    </ul>
-  
-    <h2>Create Announcement</h2>
-    <form (submit)="createAnnouncement()">
-      <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" [(ngModel)]="newAnnouncement.title" name="title" required>
+<!-- Add fields for Course ID and Department ID in your form -->
+<div class="container mt-4">
+ 
+
+  <div>
+    <div class="container mt-4">
+      <h1>Announcement Table</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Desription Of Announcements</th>
+            <th scope="col">Date of Announcement</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let StudentItem of AnnounceArray">
+            <td>{{ StudentItem.title }}</td>
+            <td>{{ StudentItem.description }}</td>
+            <td>{{ StudentItem.publish_date }}</td>
+            
+            <td>
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="setUpdate(StudentItem)"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="setDelete(StudentItem)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h1>Announcements</h1>
+  <div class="card">
+    <form>
+      <div class="form-group">
+        <label>Announcement Title</label>
+        <input
+          type="text"
+          [(ngModel)]="title"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="announcetitle"
+          name="announcetitle"
+          placeholder="Enter Announcement Title"
+        />
       </div>
-      <div>
-        <label for="content">Content:</label>
-        <textarea id="content" [(ngModel)]="newAnnouncement.content" name="content" required></textarea>
+
+      <div class="form-group">
+        <label>Content</label>
+        <input
+          type="text"
+          [(ngModel)]="description"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="announcedescription"
+          name="announcedescription"
+          placeholder="Enter Announcement Content"
+        />
       </div>
-      <div>
-        <label for="date">Date:</label>
-        <input type="text" id="date" [(ngModel)]="newAnnouncement.date" name="date" required>
+
+      <div class="form-group">
+        <label>Date of Announcement</label>
+        <input
+          type="date"
+          [(ngModel)]="publish_date"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="publish_date"
+          name="publish_date"
+          placeholder="Enter Date of Announcement"
+        />
       </div>
-      <div>
-        <button type="submit">Create</button>
+
+      <!-- Add fields for Course ID and Department ID -->
+      <div class="form-group">
+        <label>Course ID</label>
+        <input
+          type="number"
+          [(ngModel)]="course"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="course"
+          name="course"
+          placeholder="Enter Course ID"
+        />
       </div>
+
+      <div class="form-group">
+        <label>Department ID</label>
+        <input
+          type="number"
+          [(ngModel)]="department"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="department"
+          name="department"
+          placeholder="Enter Department ID"
+        />
+      </div>
+      
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        (click)="saveRecords()"
+      >
+        Save
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-warning mt-4"
+        (click)="UpdateRecords()"
+      >
+        Update
+      </button>
     </form>
   </div>
-  
+</div>

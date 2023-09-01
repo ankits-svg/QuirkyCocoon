@@ -1,70 +1,119 @@
-import { Component, OnInit } from '@angular/core';
-import { Student } from './student.model';
-import { StudentService } from './student.service';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css']
 })
-export class StudentsComponent implements OnInit {
-  students: Student[] = [];
-  newStudent: Student = new Student();
-  editingStudent: Student | null = null;
-  
-  
-  constructor(private studentService: StudentService) { }
-
-  ngOnInit(): void {
-    this.loadStudents();
-  }
-
-  loadStudents(): void {
-    this.studentService.getAllStudents().subscribe(
-      res => {
-        this.students = res
-        console.log(res)
-        console.log("data:",this.students)
-      }
-    );
+export class StudentsComponent{
+  StudentArray : any[] = [];
  
-
+    name: string = '';
+    gender: string = '';
+    date_of_birth: string = '';
+    major:string='';
+    email: string = '';
+    contact_number: string = '';
+ 
+  currentStudentID = "";
+ 
+  constructor(private http: HttpClient )
+  {
+    this.getAllStudent();
+ 
   }
-
-  createStudent(): void {
-    console.log("create:",this.newStudent)
+ 
+  saveRecords()
+  {
+  
+    let bodyData = {
+      "name" : this.name,
+    "gender": this.gender,
+    "date_of_birth": this.date_of_birth,
+    "major":this.major,
+    "email": this.email,
+    "contact_number": this.date_of_birth
+    };
+ 
+    this.http.post("http://127.0.0.1:8000/students/create",bodyData).subscribe((res: any)=>
+    {
+        console.log("gettin the ID",res);
+        alert("Student Registered Successfully");
+        this.getAllStudent();
+        this.name = '';
+        this.gender = '';
+        this.date_of_birth = '';
+        this.major='';
+        this.email='';
+        this.contact_number='';
+    });
+  }
+ 
+ 
+  getAllStudent()
+  {
+    this.http.get("http://127.0.0.1:8000/students")
+    .subscribe((res: any)=>
+    {
+        console.log(res);
+        this.StudentArray = res;
+    });
+  }
+ 
+ 
+  setUpdate(data: any)
+  {
+   this.name = data.name;
+   this.gender = data.gender;
+   this.date_of_birth = data.date_of_birth;
+   this.major=data.major;
+   this.email=data.email;
+   this.contact_number=data.contact_number;
+   this.currentStudentID = data.student_id;
+   
+  }
+ 
+ 
+ 
+  UpdateRecords()
+  {
+    let bodyData = 
+    {
+      "name" : this.name,
+    "gender": this.gender,
+    "date_of_birth": this.date_of_birth,
+    "major":this.major,
+    "email": this.email,
+    "contact_number": this.contact_number
+    };
     
-    this.studentService.createStudent(this.newStudent).subscribe(
-      (res) => {
-        console.log(res)
-        // this.loadStudents();
-        this.newStudent = new Student(); // Clear form data
-      }
-    );
+    this.http.put(`http://127.0.0.1:8000/students/update/${this.currentStudentID}`, bodyData).subscribe((resultData: any)=>
+    {
+        console.log(resultData);
+        alert("Student Registered Updateddd")
+        this.name = '';
+        this.gender = '';
+        this.date_of_birth = '';
+        this.major='';
+        this.email='';
+        this.contact_number='';
+        this.getAllStudent();
+    });
   }
 
-  editStudent(student: Student): void {
-    this.editingStudent = { ...student };
+
+  setDelete(data: any)
+  {
+    this.http.delete(`http://127.0.0.1:8000/students/delete/${data.student_id}`).subscribe((resultData: any)=>
+    {
+        console.log(resultData);
+        alert("Student Deleted")
+        this.getAllStudent();
+    });
+ 
   }
 
-  updateStudent(): void {
-    if (this.editingStudent) {
-      this.studentService.updateStudent(this.editingStudent).subscribe(
-        () => {
-          this.loadStudents();
-          this.editingStudent = null; // Clear editing state
-        }
-      );
-    }
-  }
 
-  cancelEditing(): void {
-    this.editingStudent = null; // Clear editing state
-  }
-
-  deleteStudent(studentId: number): void {
-    this.studentService.deleteStudent(studentId).subscribe(
-      () => this.loadStudents()
-    );
-  }
 }

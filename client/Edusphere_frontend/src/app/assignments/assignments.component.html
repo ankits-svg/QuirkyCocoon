@@ -1,31 +1,113 @@
-<div class="assignments">
-    <h2>Assignments</h2>
-    <ul>
-      <li *ngFor="let assignment of assignments">
-        <h3>{{ assignment.title }}</h3>
-        <p>{{ assignment.description }}</p>
-        <p>Due Date: {{ assignment.due_date }}</p>
-        <button (click)="deleteAssignment(assignment.assignment_id)">Delete</button>
-      </li>
-    </ul>
-  
-    <h2>Create Assignment</h2>
-    <form (submit)="createAssignment()">
+<div class="container mt-4">
+  <h1>Create Assignment</h1>
+  <div class="card">
+    <form>
       <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" [(ngModel)]="newAssignment.title" name="title" required>
+      <label>Course ID</label>
+        <input
+          type="text"
+          [(ngModel)]="course"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="assignmentcourse"
+          name="assignmentcourse"
+          placeholder="Enter Course ID"
+        />
       </div>
-      <div>
-        <label for="description">Description:</label>
-        <textarea id="description" [(ngModel)]="newAssignment.description" name="description" required></textarea>
+      <div class="form-group">
+        <label>Assignment Title</label>
+        <input
+          type="text"
+          [(ngModel)]="title"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="assignmenttitle"
+          name="assignmenttitle"
+          placeholder="Enter Assignment Title"
+        />
       </div>
-      <div>
-        <label for="dueDate">Due Date:</label>
-        <input type="text" id="dueDate" [(ngModel)]="newAssignment.due_date" name="dueDate" required>
+
+      <div class="form-group">
+        <label>Assignment Description</label>
+        <input
+          type="text"
+          [(ngModel)]="description"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="assignmentdescription"
+          name="assignmentdescription"
+          placeholder="Enter Assignment Description"
+        />
       </div>
-      <div>
-        <button type="submit">Create</button>
+
+      <div class="form-group">
+        <label>Assignment Due-Date</label>
+        <input
+          type="date"
+          [(ngModel)]="due_date"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="assignmentdue_date"
+          name="assignmentdue_date"
+          placeholder="Enter Assignment Due-Date"
+        />
       </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        (click)="saveRecords()"
+      >
+        Submit
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-warning mt-4"
+        (click)="UpdateRecords()"
+      >
+        Update
+      </button>
     </form>
   </div>
-  
+</div>
+
+<div>
+  <div class="container mt-4">
+    <h1>Assignment List</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Course ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Due-Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let StudentItem of AssignmentArray">
+          <td>{{ StudentItem.course }}</td>
+          <td>{{ StudentItem.title }}</td>
+          <td>{{ StudentItem.description }}</td>
+          <td>{{ StudentItem.due_date }}</td>
+          
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="setUpdate(StudentItem)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="setDelete(StudentItem)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

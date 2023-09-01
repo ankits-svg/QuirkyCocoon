@@ -1,25 +1,128 @@
-<div class="courses">
-    <h2>Courses</h2>
-<!-- <ul>
-  <li *ngFor="let course of courses">
-    <span *ngIf="editingCourse.course_id !== course.course_id">{{ course.title }}</span>
-    <input
-      *ngIf="editingCourse.course_id === course.course_id"
-      type="text"
-      [(ngModel)]="editingCourse.title"
-      name="editCourseTitle"
-    />
-    <button *ngIf="editingCourse.course_id !== course.course_id" (click)="editCourse(course)">Edit</button>
-    <button *ngIf="editingCourse.course_id === course.course_id" (click)="updateCourse()">Save</button>
-    <button *ngIf="editingCourse.course_id === course.course_id" (click)="cancelEdit()">Cancel</button>
-    <button (click)="deleteCourse(course.course_id)">Delete</button>
-  </li>
-</ul> -->
+<div class="container mt-4">
+  <h1>Courses Management</h1>
+  <div class="card">
+    <form>
+      <div class="form-group">
+        <label>Course Code</label>
+        <input
+          type="text"
+          [(ngModel)]="course_code"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="coursecourse_code"
+          name="coursecourse_code"
+          placeholder="Enter Course Code"
+        />
+      </div>
+      <div class="form-group">
+        <label>Course Department</label>
+        <input
+          type="text"
+          [(ngModel)]="department"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="coursedepartment"
+          name="coursedepartment"
+          placeholder="Enter Department"
+        />
+      </div>
+      <div class="form-group">
+        <label>Course Name</label>
+        <input
+          type="text"
+          [(ngModel)]="course_name"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="coursecourse_name"
+          name="coursecourse_name"
+          placeholder="Enter Description"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label>Course Credits</label>
+        <input
+          type="number"
+          [(ngModel)]="credits"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="coursecredits"
+          name="coursecredits"
+          placeholder="Enter Credits"
+        />
+      </div>
+      <div class="form-group">
+        <label>Course Description</label>
+        <input
+          type="text"
+          [(ngModel)]="description"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="coursedescription"
+          name="coursedescription"
+          placeholder="Enter Description"
+        />
+      </div>
 
-    <div>
-      <label for="newCourseTitle">New Course Title:</label>
-      <input type="text" id="newCourseTitle" [(ngModel)]="newCourse.title" name="newCourseTitle" required>
-      <button (click)="createCourse()">Create Course</button>
-    </div>
+      
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        (click)="saveRecords()"
+      >
+        Submit
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-warning mt-4"
+        (click)="UpdateRecords()"
+      >
+        Update
+      </button>
+    </form>
   </div>
-  
+</div>
+
+<div>
+  <div class="container mt-4">
+    <h1>Course List</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Course Code</th>
+          <th scope="col">Course Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">Credits</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let StudentItem of CourseArray">
+          <td>{{ StudentItem.course_code }}</td>
+          <td>{{ StudentItem.course_name }}</td>
+          <td>{{ StudentItem.department }}</td>
+          <td>{{ StudentItem.credits }}</td>
+          <td>{{ StudentItem.description }}</td>
+         
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="setUpdate(StudentItem)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="setDelete(StudentItem)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,61 +1,113 @@
-import { Component, OnInit } from '@angular/core';
-import { Submission } from './submission.model'; // Import the Submission model
-import { SubmissionService } from './submission.service'; 
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-submissions',
   templateUrl: './submissions.component.html',
   styleUrls: ['./submissions.component.css']
 })
-export class SubmissionsComponent implements OnInit {
-  submissions: Submission[] = [];
-  newSubmission: Submission = new Submission();
+export class SubmissionsComponent{
+  SubmissionArray : any[] = [];
+ 
+  assignment: number=0; // You can use the assignment ID here
+  student: number=0; // You can use the student ID here
+  submission_date: string='';
+  status: string='';
+  remarks: string='';
 
-  constructor(private submissionService: SubmissionService,
-    private router: Router // Import Router service
-    ) { }
+currentID = "";
 
-  ngOnInit(): void {
-    this.loadSubmissions();
-  }
+constructor(private http: HttpClient )
+{
+  this.getAllSubmission();
+
+}
+
+saveRecords()
+{
+
+  let bodyData = {
+    "assignment" : this.assignment,
+    "student": this.student,
+    "submission_date": this.submission_date,
+    "status":this.status,
+    "remarks": this.remarks
+  };
+
+  this.http.post("http://127.0.0.1:8000/submissions/create",bodyData).subscribe((res: any)=>
+  {
+      console.log("gettin the ID",res);
+      alert("Assignment Submission Done Successfully");
+      this.getAllSubmission();
+      this.assignment = 0;
+      this.student = 0;
+      this.submission_date = '';
+      this.status='';
+      this.remarks='';
+  });
+}
 
 
-  loadSubmissions(): void {
-    this.submissionService.getAllSubmissions().subscribe(
-      submissions => this.submissions = submissions
-    );
-  }
+getAllSubmission()
+{
+  this.http.get("http://127.0.0.1:8000/submissions")
+  .subscribe((res: any)=>
+  {
+      console.log(res);
+      this.SubmissionArray = res;
+  });
+}
 
-  createSubmission(): void {
-    this.submissionService.createSubmission(this.newSubmission).subscribe(
-      () => {
-        this.loadSubmissions();
-        this.newSubmission = new Submission(); // Clear form data
-      }
-    );
-  }
 
-  editSubmission(submission: Submission): void {
-    // Set the newSubmission object to the submission to be edited
-    this.newSubmission = { ...submission };
-  }
+setUpdate(data: any)
+{
+ this.assignment = data.assignment_id;;
+ this.student = data.student_id;
+ this.submission_date = data.submission_date;
+ this.status=data.status;
+ this.remarks=data.remarks;
+ this.currentID = data.submission_id;
+ 
+}
 
-  updateSubmission(): void {
-    this.submissionService.updateSubmission(this.newSubmission).subscribe(
-      () => {
-        this.loadSubmissions();
-        this.newSubmission = new Submission(); // Clear form data after update
-      }
-    );
-  }
 
-  deleteSubmission(submissionId: number): void {
-    this.submissionService.deleteSubmission(submissionId).subscribe(
-      () => this.loadSubmissions()
-    );
-  }
-  navigateToSubmissions(): void {
-    this.router.navigate(['/submissions']); // Navigate to submissions route
-  }
+
+UpdateRecords()
+{
+  let bodyData = 
+  {
+    "assignment" : this.assignment,
+  "student": this.student,
+  "submission_date": this.submission_date,
+  "status":this.status,
+  "remarks": this.remarks
+  };
+  
+  this.http.put(`http://127.0.0.1:8000/submissions/update/${this.currentID}`, bodyData).subscribe((resultData: any)=>
+  {
+      console.log(resultData);
+      alert("Submission updated succesfully")
+      this.assignment = 0;
+      this.student = 0;
+      this.submission_date = '';
+      this.status='';
+      this.remarks='';
+      this.getAllSubmission();
+  });
+}
+
+
+setDelete(data: any)
+{
+  this.http.delete(`http://127.0.0.1:8000/submissions/delete/${data.submission_id}`).subscribe((resultData: any)=>
+  {
+      console.log(resultData);
+      alert("Submission Deleted")
+      this.getAllSubmission();
+  });
+
+}
+
+
 }

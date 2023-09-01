@@ -1,15 +1,86 @@
-<h2>Departments</h2>
+<div class="container mt-4">
+  <h1>Department Management</h1>
+  <div class="card">
+    <form>
+      <div class="form-group">
+        <label>Department Name</label>
+        <input
+          type="text"
+          [(ngModel)]="name"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="departmentname"
+          name="departmentname"
+          placeholder="Enter Name"
+        />
+      </div>
 
-<ul>
-  <li *ngFor="let department of departments">
-    <span>{{ department.name }}</span>
-    <input type="text" [(ngModel)]="department.description" />
-    <button (click)="updateDepartment(department)">Save</button>
-    <button (click)="deleteDepartment(department.department_id)">Delete</button>
-  </li>
-</ul>
+      <div class="form-group">
+        <label>Description</label>
+        <input
+          type="text"
+          [(ngModel)]="description"
+          [ngModelOptions]="{ standalone: true }"
+          class="form-control"
+          id="departmentdescription"
+          name="departmentdescription"
+          placeholder="Enter Description Here"
+        />
+      </div>
 
-<h3>Add New Department</h3>
-<input type="text" [(ngModel)]="newDepartment.name" placeholder="Department Name" />
-<input type="text" [(ngModel)]="newDepartment.description" placeholder="Department Description" />
-<button (click)="addDepartment()">Add Department</button>
+      
+      <button
+        type="submit"
+        class="btn btn-primary mt-4"
+        (click)="saveRecords()"
+      >
+        Save
+      </button>
+      &nbsp;
+      <button
+        type="submit"
+        class="btn btn-warning mt-4"
+        (click)="UpdateRecords()"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</div>
+
+<div>
+  <div class="container mt-4">
+    <h1>Department List</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let StudentItem of DepartmentArray">
+          <td>{{ StudentItem.name }}</td>
+          <td>{{ StudentItem.description }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="setUpdate(StudentItem)"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="setDelete(StudentItem)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
