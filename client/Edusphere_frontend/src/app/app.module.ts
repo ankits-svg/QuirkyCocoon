@@ -14,6 +14,10 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { SubmissionsComponent } from './submissions/submissions.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
     AssignmentsComponent,
     SubmissionsComponent,
     DepartmentsComponent,
-    AnnouncementsComponent
+    AnnouncementsComponent,
+    HomeComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,8 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

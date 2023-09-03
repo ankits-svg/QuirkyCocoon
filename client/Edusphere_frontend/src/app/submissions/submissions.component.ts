@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SubmissionsComponent{
   SubmissionArray : any[] = [];
- 
+  role: string = 'student';
   assignment: number=0; // You can use the assignment ID here
   student: number=0; // You can use the student ID here
   submission_date: string='';
@@ -22,6 +22,10 @@ constructor(private http: HttpClient )
 {
   this.getAllSubmission();
 
+}
+
+toggleRole() {
+  this.role = (this.role === 'student') ? 'admin' : 'student';
 }
 
 saveRecords()

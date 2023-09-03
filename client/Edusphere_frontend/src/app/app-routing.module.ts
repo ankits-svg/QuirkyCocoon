@@ -8,6 +8,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { EnrollmentsComponent } from './enrollments/enrollments.component';
 import { SubmissionsComponent } from './submissions/submissions.component';
+import { HomeComponent } from './home/home.component';
+
 
 const routes: Routes = [
   { path: 'students', component: StudentsComponent },
@@ -18,7 +20,8 @@ const routes: Routes = [
   { path: 'departments', component: DepartmentsComponent},
   { path: 'enrollments', component: EnrollmentsComponent},
   { path: 'submissions', component: SubmissionsComponent},
-  { path: '', redirectTo: '/students', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

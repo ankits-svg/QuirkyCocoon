@@ -1,0 +1,25 @@
+<div class="dashboard">
+    <h2>Student Dashboard</h2>
+    
+    <section>
+      <h3>Enrolled Courses</h3>
+      <ul>
+        <li *ngFor="let course of CourseArray">{{ course.course_name }}</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h3>Upcoming Assignments</h3>
+      <ul>
+        <li *ngFor="let assignment of AssignmentArray">{{ assignment.title }} (Due: {{ assignment.due_date | date }})</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h3>Important Announcements</h3>
+      <ul>
+        <li *ngFor="let announcement of AnnounceArray">{{ announcement.description }}</li>
+      </ul>
+    </section>
+  </div>
+  

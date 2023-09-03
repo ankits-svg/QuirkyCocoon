@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body { height: 100%; }
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+body {
+    font-family: Arial, sans-serif;
+    color: black; /* Set the default text color to black */
+    background-color: white;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  /* Navigation styles */
+  .bg-blue-200 {
+    background-color: white; /* Set the background color to white */
+  }
+
+  .bg-blue-200 a {
+    color: black; /* Set the text color in the navigation to black */
+  }
+
+  .bg-blue-200 a:hover {
+    color: #FFA500; /* Change text color to orange on hover */
+  }
+
+  /* Hero section styles */
+  .bg-pink-100 h2,
+  .bg-pink-100 p {
+    color: black; /* Set text color to black in the hero section */
+  }
+
+  /* Header section styles */
+  .bg-pink-200 h2,
+  .bg-pink-200 p {
+    color: black; /* Set text color to black in the header section */
+  }
