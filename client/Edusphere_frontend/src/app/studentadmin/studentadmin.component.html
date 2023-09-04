@@ -1,0 +1,231 @@
+<nav class="bg-gradient-to-b from-white-500 ...">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button
+            type="button"
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-sky-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="absolute -inset-0.5"></span>
+            <span class="sr-only">Open main menu</span>
+            <!--
+                Icon when menu is closed.
+    
+                Menu open: "hidden", Menu closed: "block"
+              -->
+            <svg
+              class="block h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+            <!--
+                Icon when menu is open.
+    
+                Menu open: "block", Menu closed: "hidden"
+              -->
+            <svg
+              class="hidden h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+        >
+          <div class="flex flex-shrink-0 items-center">
+            <img
+              class="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              alt="Your Company"
+            />
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-black text-white", Default: "text-gray-500 hover:bg-gray-500 hover:text-white" -->
+              <a
+              [routerLink]="['/adminhome']"
+                class="bg-black text-white rounded-md px-3 py-2 text-sm font-medium"
+                aria-current="page"
+                >Home</a
+              >
+              <a
+              [routerLink]="['/studentsadmin']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Students</a
+              >
+              <a
+              [routerLink]="['/courses']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Courses</a
+              >
+              <a
+              [routerLink]="['/submissionsadmin']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Submission</a
+              >
+              <a
+              [routerLink]="['/announcements']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Announcements</a
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+        >
+          <button
+            type="button"
+            class="relative rounded-full bg-gray-500 p-1 text-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-500"
+          >
+            <span class="absolute -inset-1.5"></span>
+            <span class="sr-only">View notifications</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+              />
+            </svg>
+          </button>
+  
+          <!-- Profile dropdown -->
+          <div class="relative ml-3">
+            <div>
+              <button
+                type="button"
+                class="relative flex rounded-full bg-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-500"
+                id="user-menu-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+                <img
+                  class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <!-- Current: "bg-black text-white", Default: "text-gray-500 hover:bg-gray-500 hover:text-white" -->
+        <a
+        [routerLink]="['/home']"
+          class="bg-black text-white block rounded-md px-3 py-2 text-base font-medium"
+          aria-current="page"
+          >Home</a
+        >
+        <a
+        [routerLink]="['/assignments']"
+          class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+          >Assignments</a
+        >
+        <a
+        [routerLink]="['/courses']"
+          class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+          >Courses</a
+        >
+        <a
+        [routerLink]="['/submissions']"
+          class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+          >Submissions</a
+        >
+        <a
+        [routerLink]="['/announcements']"
+          class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+          >Announcements</a
+        >
+      </div>
+    </div>
+  </nav>
+
+<!-- Student Details Table -->
+<div class="bg-white rounded-lg p-6 mt-8">
+    <h2 class="text-2xl font-semibold mb-4">Student Details</h2>
+    <table class="min-w-full border-collapse">
+      <thead>
+        <tr>
+            <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Student Id
+              </th>
+          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Student Name
+          </th>
+          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Gender
+          </th>
+          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Date of Birth
+          </th>
+          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Major Course
+          </th>
+          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Email
+          </th>
+          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Contact Number
+          </th>
+          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of StudentArray">
+            <td class="px-6 py-4 whitespace-no-wrap">{{ student.student_id }}</td>
+          <td class="px-6 py-4 whitespace-no-wrap">{{ student.name }}</td>
+          <td class="px-6 py-4 whitespace-no-wrap">{{ student.gender }}</td>
+          <td class="px-6 py-4 whitespace-no-wrap">{{ student.date_of_birth }}</td>
+          <td class="px-6 py-4 whitespace-no-wrap">{{ student.major }}</td>
+          <td class="px-6 py-4 whitespace-no-wrap">{{ student.email }}</td>
+          <td class="px-6 py-4 whitespace-no-wrap">{{ student.contact_number }}</td>
+          <button
+          type="submit"
+          class="btn btn-warning bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          (click)="setDelete(student)"
+        >
+          Delete
+        </button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -17,6 +17,13 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MainComponent } from './main/main.component';
+import { AlreadyComponent } from './already/already.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { StudentadminComponent } from './studentadmin/studentadmin.component';
+import { SubmissionadminComponent } from './submissionadmin/submissionadmin.component';
+
 
 
 @NgModule({
@@ -31,6 +38,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     DepartmentsComponent,
     AnnouncementsComponent,
     HomeComponent,
+    MainComponent,
+    AlreadyComponent,
+    AdminComponent,
+    AdminhomeComponent,
+    StudentadminComponent,
+    SubmissionadminComponent,
+    
     
   ],
   imports: [

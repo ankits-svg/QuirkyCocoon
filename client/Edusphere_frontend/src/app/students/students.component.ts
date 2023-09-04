@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -19,7 +20,7 @@ export class StudentsComponent{
  
   currentStudentID = "";
  
-  constructor(private http: HttpClient )
+  constructor(private http: HttpClient, private router: Router )
   {
     this.getAllStudent();
  
@@ -34,13 +35,16 @@ export class StudentsComponent{
     "date_of_birth": this.date_of_birth,
     "major":this.major,
     "email": this.email,
-    "contact_number": this.date_of_birth
+    "contact_number": this.contact_number
     };
  
-    this.http.post("http://127.0.0.1:8000/students/create",bodyData).subscribe((res: any)=>
+    if(bodyData.name!=='' && bodyData.major!=='' && bodyData.gender!==''){
+      this.http.post("http://127.0.0.1:8000/students/create",bodyData).subscribe((res: any)=>
     {
         console.log("gettin the ID",res);
-        alert("Student Registered Successfully");
+          alert("Student Registered Successfully");
+        this.router.navigate(['/home']);
+       
         this.getAllStudent();
         this.name = '';
         this.gender = '';
@@ -49,8 +53,13 @@ export class StudentsComponent{
         this.email='';
         this.contact_number='';
     });
+    }else{
+      alert('Please fill the required details!!')
+    }
+    
+    
   }
- 
+  
  
   getAllStudent()
   {

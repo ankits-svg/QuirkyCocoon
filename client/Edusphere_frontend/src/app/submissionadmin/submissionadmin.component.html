@@ -51,7 +51,9 @@
           </svg>
         </button>
       </div>
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+      <div
+        class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+      >
         <div class="flex flex-shrink-0 items-center">
           <img
             class="h-8 w-auto"
@@ -174,132 +176,72 @@
   </div>
 </nav>
 
-<div class="bg-sky-500 py-12">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-  <h1 class="text-3xl font-semibold text-white mb-6">Courses Management</h1>
-  <div class="bg-white rounded-lg p-6">
-    <form>
-      <div class="mb-4">
-        <label class="block text-black mb-2" for="coursecourse_code">Course Code</label>
-        <input
-          type="text"
-          [(ngModel)]="course_code"
-          [ngModelOptions]="{ standalone: true }"
-          class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-          id="coursecourse_code"
-          name="coursecourse_code"
-          placeholder="Enter Course Code"
-        />
-      </div>
-      <div class="mb-4">
-        <label class="block text-black mb-2" for="coursedepartment">Course Department</label>
-        <input
-          type="text"
-          [(ngModel)]="department"
-          [ngModelOptions]="{ standalone: true }"
-          class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-          id="coursedepartment"
-          name="coursedepartment"
-          placeholder="Enter Department"
-        />
-      </div>
-      <div class="mb-4">
-        <label class="block text-black mb-2" for="coursecourse_name">Course Name</label>
-        <input
-          type="text"
-          [(ngModel)]="course_name"
-          [ngModelOptions]="{ standalone: true }"
-          class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-          id="coursecourse_name"
-          name="coursecourse_name"
-          placeholder="Enter Description"
-        />
-      </div>
-      <div class="mb-4">
-        <label class="block text-black mb-2" for="coursecredits">Course Credits</label>
-        <input
-          type="number"
-          [(ngModel)]="credits"
-          [ngModelOptions]="{ standalone: true }"
-          class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-          id="coursecredits"
-          name="coursecredits"
-          placeholder="Enter Credits"
-        />
-      </div>
-      <div class="mb-4">
-        <label class="block text-black mb-2" for="coursedescription">Course Description</label>
-        <input
-          type="text"
-          [(ngModel)]="description"
-          [ngModelOptions]="{ standalone: true }"
-          class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-          id="coursedescription"
-          name="coursedescription"
-          placeholder="Enter Description"
-        />
-      </div>
-
-      <div class="flex flex-col sm:flex-row justify-between items-center mt-4">
+<div class="bg-white rounded-lg p-6 mt-8">
+  <h2 class="text-2xl font-semibold mb-4">Submissions Details</h2>
+  <table class="min-w-full border-collapse">
+    <thead>
+      <tr>
+        <th
+          class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Submission Id
+        </th>
+        <th
+          class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Assignment Id
+        </th>
+        <th
+          class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Student Id
+        </th>
+        <th
+          class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Submission Date
+        </th>
+        <th
+          class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Status of Submissions 
+        </th>
+        <th
+          class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Remarks
+        </th>
+        
+        <th
+          class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+        >
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of SubmissionArray">
+        <td class="px-6 py-4 whitespace-no-wrap">
+          {{ student.submission_id }}
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap">{{ student.assignment }}</td>
+        <td class="px-6 py-4 whitespace-no-wrap">{{ student.student }}</td>
+        <td class="px-6 py-4 whitespace-no-wrap">
+          {{ student.submission_date }}
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap">
+          {{ student.status }}
+        </td>
+        <!-- <td class="px-6 py-4 whitespace-no-wrap">{{ student.status }}</td> -->
+        <td class="px-6 py-4 whitespace-no-wrap">{{ student.remarks }}</td>
         <button
           type="submit"
-          class="mb-2 sm:mb-0 w-full sm:w-auto px-4 py-2 text-white bg-sky-500 rounded-md hover:bg-sky-600 focus:outline-none focus:bg-sky-600"
-          (click)="saveRecords()"
+          class="btn btn-warning bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          (click)="setDelete(student)"
         >
-          Submit
+          Delete
         </button>
-        <button
-          type="submit"
-          class="w-full sm:w-auto px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-          (click)="UpdateRecords()"
-        >
-          Update
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-</div>
-
-<div class="container mt-8">
-  <h1 class="text-xl font-semibold text-gray-500">Course List</h1>
-  <div class="overflow-x-auto">
-    <table class="min-w-full divide-y divide-gray-200 mt-4">
-      <thead class="bg-gray-500">
-        <tr>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Course Code</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Course Name</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Department</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Credits</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Description</th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Actions</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white divide-y divide-gray-200">
-        <tr *ngFor="let StudentItem of CourseArray">
-          <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.course_code }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.course_name }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.department }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.credits }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.description }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">
-            <button
-              type="button"
-              class="px-2 py-1 text-white bg-sky-500 rounded-md hover:bg-sky-600 focus:outline-none focus:bg-sky-600"
-              (click)="setUpdate(StudentItem)"
-            >
-              Edit
-            </button>
-            <button
-              type="button"
-              class="px-2 py-1 text-white bg-gray-500 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-              (click)="setDelete(StudentItem)"
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      </tr>
+    </tbody>
+  </table>
 </div>

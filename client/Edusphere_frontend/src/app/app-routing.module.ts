@@ -9,10 +9,17 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { EnrollmentsComponent } from './enrollments/enrollments.component';
 import { SubmissionsComponent } from './submissions/submissions.component';
 import { HomeComponent } from './home/home.component';
+import { MainComponent } from './main/main.component';
+import { AlreadyComponent } from './already/already.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { StudentadminComponent } from './studentadmin/studentadmin.component';
+import { SubmissionadminComponent } from './submissionadmin/submissionadmin.component';
 
 
 const routes: Routes = [
   { path: 'students', component: StudentsComponent },
+  { path: 'studentsadmin', component: StudentadminComponent },
   { path: 'instructors', component: InstructorsComponent },
   { path: 'announcements', component: AnnouncementsComponent},
   { path: 'assignments', component: AssignmentsComponent},
@@ -20,8 +27,13 @@ const routes: Routes = [
   { path: 'departments', component: DepartmentsComponent},
   { path: 'enrollments', component: EnrollmentsComponent},
   { path: 'submissions', component: SubmissionsComponent},
+  { path: 'submissionsadmin', component: SubmissionadminComponent},
   { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'main', component: MainComponent},
+  { path: 'already', component: AlreadyComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'adminhome', component: AdminhomeComponent},
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
 ];
 
 @NgModule({
