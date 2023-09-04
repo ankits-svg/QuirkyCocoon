@@ -23,6 +23,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { StudentadminComponent } from './studentadmin/studentadmin.component';
 import { SubmissionadminComponent } from './submissionadmin/submissionadmin.component';
+import { EnrollmentsadminComponent } from './enrollmentsadmin/enrollmentsadmin.component';
 
 
 
@@ -44,6 +45,7 @@ import { SubmissionadminComponent } from './submissionadmin/submissionadmin.comp
     AdminhomeComponent,
     StudentadminComponent,
     SubmissionadminComponent,
+    EnrollmentsadminComponent,
     
     
   ],

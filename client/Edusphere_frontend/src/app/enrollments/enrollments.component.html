@@ -208,6 +208,11 @@
       class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
       >Announcements</a
     >
+    <a
+              [routerLink]="['/enrollments']"
+              class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+              >Enrollments</a
+            >
   </div>
 </div>
 </nav>
@@ -220,11 +225,11 @@
         <label>Student ID</label>
         <input
           type="number"
-          [(ngModel)]="student_id"
+          [(ngModel)]="student"
           [ngModelOptions]="{ standalone: true }"
           class="form-control"
-          id="enrollmentstudent_id"
-          name="enrollnmentstudent_id"
+          id="enrollmentstudent"
+          name="enrollnmentstudent"
           placeholder="Enter Student Id"
         />
       </div>
@@ -233,11 +238,11 @@
         <label>Course ID</label>
         <input
           type="number"
-          [(ngModel)]="course_id"
+          [(ngModel)]="course"
           [ngModelOptions]="{ standalone: true }"
           class="form-control"
-          id="enrollmentcourse_id"
-          name="enrollmentcourse_id"
+          id="enrollmentcourse"
+          name="enrollmentcourse"
           placeholder="Enter Course Id"
         />
       </div>

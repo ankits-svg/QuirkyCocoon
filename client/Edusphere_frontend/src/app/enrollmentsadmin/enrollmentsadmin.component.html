@@ -12,10 +12,10 @@
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
             <!--
-                Icon when menu is closed.
-    
-                Menu open: "hidden", Menu closed: "block"
-              -->
+                  Icon when menu is closed.
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
             <svg
               class="block h-6 w-6"
               fill="none"
@@ -31,10 +31,10 @@
               />
             </svg>
             <!--
-                Icon when menu is open.
-    
-                Menu open: "block", Menu closed: "hidden"
-              -->
+                  Icon when menu is open.
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
             <svg
               class="hidden h-6 w-6"
               fill="none"
@@ -51,9 +51,7 @@
             </svg>
           </button>
         </div>
-        <div
-          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
-        >
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
             <img
               class="h-8 w-auto"
@@ -65,35 +63,40 @@
             <div class="flex space-x-4">
               <!-- Current: "bg-black text-white", Default: "text-gray-500 hover:bg-gray-500 hover:text-white" -->
               <a
-              [routerLink]="['/adminhome']"
+                [routerLink]="['/adminhome']"
                 class="bg-black text-white rounded-md px-3 py-2 text-sm font-medium"
                 aria-current="page"
                 >Home</a
               >
               <a
-              [routerLink]="['/studentsadmin']"
+                [routerLink]="['/studentsadmin']"
                 class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >Students</a
               >
               <a
-              [routerLink]="['/courses']"
+                [routerLink]="['/courses']"
                 class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >Courses</a
               >
               <a
-              [routerLink]="['/submissionsadmin']"
+                [routerLink]="['/submissionsadmin']"
                 class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >Submission</a
               >
               <a
-              [routerLink]="['/announcements']"
+                [routerLink]="['/announcements']"
                 class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >Announcements</a
               >
               <a
-              [routerLink]="['/departments']"
+                [routerLink]="['/departments']"
                 class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >Departments</a
+              >
+              <a
+                [routerLink]="['/enrollmentsadmin']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Enrollments</a
               >
             </div>
           </div>
@@ -152,96 +155,64 @@
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-black text-white", Default: "text-gray-500 hover:bg-gray-500 hover:text-white" -->
         <a
-        [routerLink]="['/home']"
+          [routerLink]="['/home']"
           class="bg-black text-white block rounded-md px-3 py-2 text-base font-medium"
           aria-current="page"
           >Home</a
         >
         <a
-        [routerLink]="['/assignments']"
+          [routerLink]="['/assignments']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Assignments</a
         >
         <a
-        [routerLink]="['/courses']"
+          [routerLink]="['/courses']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Courses</a
         >
         <a
-        [routerLink]="['/submissions']"
+          [routerLink]="['/submissions']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Submissions</a
         >
         <a
-        [routerLink]="['/announcements']"
+          [routerLink]="['/announcements']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Announcements</a
-        >
-        <a
-        [routerLink]="['/departments']"
-        class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-        >Departments</a
-        >
-            
-        <a
-        [routerLink]="['/enrollmentsadmin']"
-        class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-        >Enrollments</a
         >
       </div>
     </div>
   </nav>
 
-<!-- Student Details Table -->
-<div class="bg-white rounded-lg p-6 mt-8">
-    <h2 class="text-2xl font-semibold mb-4">Student Details</h2>
-    <table class="min-w-full border-collapse">
-      <thead>
-        <tr>
-            <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                Student Id
-              </th>
-          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-            Student Name
-          </th>
-          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-            Gender
-          </th>
-          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-            Date of Birth
-          </th>
-          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-            Major Course
-          </th>
-          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-            Email
-          </th>
-          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-            Contact Number
-          </th>
-          <th class="px-6 py-3 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-            Actions
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of StudentArray">
-            <td class="px-6 py-4 whitespace-no-wrap">{{ student.student_id }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ student.name }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ student.gender }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ student.date_of_birth }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ student.major }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ student.email }}</td>
-          <td class="px-6 py-4 whitespace-no-wrap">{{ student.contact_number }}</td>
-          <button
-          type="submit"
-          class="btn btn-warning bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-          (click)="setDelete(student)"
-        >
-          Delete
-        </button>
-        </tr>
-      </tbody>
-    </table>
+<div>
+    <div class="container mt-4">
+      <h1 class="text-2xl font-semibold text-sky-500">Enrollments Data</h1>
+      <table class="min-w-full divide-y divide-gray-500 mt-4">
+        <thead class="bg-gray-500">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Student ID</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Course ID</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Enrollment Date</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-500">
+          <tr *ngFor="let StudentItem of EnrollmentArray">
+            <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.student }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.course }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">{{ StudentItem.enrollment_date }}</td>
+            <td class="px-6 py-4 whitespace-no-wrap">
+              <button
+                type="button"
+                class="px-2 py-1 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"
+                (click)="setDelete(StudentItem)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   

@@ -10,8 +10,8 @@ import { BehaviorSubject } from 'rxjs';
 export class EnrollmentsComponent{
   EnrollmentArray : any[] = [];
  
-    student_id: number = 0;
-    course_id: number = 0;
+    student: number = 0;
+    course: number = 0;
     enrollment_date: string = '';
  
   currentID = "";
@@ -26,8 +26,8 @@ export class EnrollmentsComponent{
   {
   
     let bodyData = {
-      "student_id" : this.student_id,
-    "course_id": this.course_id,
+      "student" : this.student,
+    "course": this.course,
     "enrollment_date": this.enrollment_date
     };
  
@@ -36,8 +36,8 @@ export class EnrollmentsComponent{
         console.log("gettin the ID",res);
         alert("Enrollment Successfully");
         this.getAllEnrollment();
-        this.student_id = 0;
-        this.course_id = 0;
+        this.student = 0;
+        this.course = 0;
         this.enrollment_date = '';
         
     });
@@ -59,7 +59,7 @@ export class EnrollmentsComponent{
 
   setDelete(data: any)
   {
-    this.http.delete(`http://127.0.0.1:8000/enrollments/delete/${data.student_id}`).subscribe((resultData: any)=>
+    this.http.delete(`http://127.0.0.1:8000/enrollments/delete/${data.student}`).subscribe((resultData: any)=>
     {
         console.log(resultData);
         alert("Instructor Deleted")
