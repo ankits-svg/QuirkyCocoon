@@ -24,6 +24,8 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { StudentadminComponent } from './studentadmin/studentadmin.component';
 import { SubmissionadminComponent } from './submissionadmin/submissionadmin.component';
 import { EnrollmentsadminComponent } from './enrollmentsadmin/enrollmentsadmin.component';
+import { AssignmentadminComponent } from './assignmentadmin/assignmentadmin.component';
+import { CourseInstructorComponent } from './course-instructor/course-instructor.component';
 
 
 
@@ -46,6 +48,8 @@ import { EnrollmentsadminComponent } from './enrollmentsadmin/enrollmentsadmin.c
     StudentadminComponent,
     SubmissionadminComponent,
     EnrollmentsadminComponent,
+    AssignmentadminComponent,
+    CourseInstructorComponent,
     
     
   ],

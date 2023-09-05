@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -9,18 +10,20 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EnrollmentsComponent{
   EnrollmentArray : any[] = [];
- 
-    student: number = 0;
-    course: number = 0;
+  enrollItem: string | null = localStorage.getItem('enroll');
+  studentItem: string | null = localStorage.getItem('studentdetails');
+    student: number = this.studentItem ? JSON.parse(this.studentItem).student_id : 0;
+    course: number = this.enrollItem ? JSON.parse(this.enrollItem).course_id : 0;
     enrollment_date: string = '';
  
   currentID = "";
  
-  constructor(private http: HttpClient )
+  constructor(private http: HttpClient)
   {
     this.getAllEnrollment();
  
   }
+  
  
   saveRecords()
   {
@@ -42,6 +45,7 @@ export class EnrollmentsComponent{
         
     });
   }
+ 
  
  
   getAllEnrollment()

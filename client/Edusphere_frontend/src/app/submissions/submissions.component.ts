@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -9,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SubmissionsComponent{
   SubmissionArray : any[] = [];
-  role: string = 'student';
+  
   assignment: number=0; // You can use the assignment ID here
   student: number=0; // You can use the student ID here
   submission_date: string='';
@@ -18,15 +19,13 @@ export class SubmissionsComponent{
 
 currentID = "";
 
-constructor(private http: HttpClient )
+constructor(private http: HttpClient, private router: Router )
 {
   this.getAllSubmission();
 
 }
 
-toggleRole() {
-  this.role = (this.role === 'student') ? 'admin' : 'student';
-}
+
 
 saveRecords()
 {
@@ -39,10 +38,14 @@ saveRecords()
     "remarks": this.remarks
   };
 
-  this.http.post("http://127.0.0.1:8000/submissions/create",bodyData).subscribe((res: any)=>
+  if(bodyData.assignment!==0 && bodyData.status!=='' && bodyData.student!==0){
+    this.http.post("http://127.0.0.1:8000/submissions/create",bodyData).subscribe((res: any)=>
   {
       console.log("gettin the ID",res);
       alert("Assignment Submission Done Successfully");
+      setTimeout(()=>{
+        this.router.navigate(['/assignments']);
+      },2000)
       this.getAllSubmission();
       this.assignment = 0;
       this.student = 0;
@@ -50,6 +53,9 @@ saveRecords()
       this.status='';
       this.remarks='';
   });
+  }else{
+    alert('Please fill the required details!!')
+  }
 }
 
 

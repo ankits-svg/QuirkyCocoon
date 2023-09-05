@@ -1,28 +1,4 @@
-<div class="relative isolate flex items-center gap-x-6 overflow-hidden bg-sky-500 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
-    <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
-      <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
-    </div>
-    <div class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl" aria-hidden="true">
-      <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)"></div>
-    </div>
-    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-      <p class="text-sm leading-6 text-white">
-        <strong class="font-semibold">GeneriCon 2023</strong><svg viewBox="0 0 2 2" class="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true"><circle cx="1" cy="1" r="1" /></svg>Join us in Denver from June 7 – 9 to see what’s coming next.
-      </p>
-      <a href="#" class="flex-none rounded-full bg-black px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900">Register now <span aria-hidden="true">&rarr;</span></a>
-    </div>
-    <div class="flex flex-1 justify-end">
-      <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]">
-        <span class="sr-only">Dismiss</span>
-        <svg class="h-5 w-5 text-black" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-        </svg>
-      </button>
-    </div>
-  </div>
-  
-  <!-- Navbar -->
-  <nav class="bg-gradient-to-b from-white-500 ...">
+<nav class="bg-gradient-to-b from-white-500 ...">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -36,10 +12,10 @@
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
             <!--
-                Icon when menu is closed.
-    
-                Menu open: "hidden", Menu closed: "block"
-              -->
+                  Icon when menu is closed.
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
             <svg
               class="block h-6 w-6"
               fill="none"
@@ -55,10 +31,10 @@
               />
             </svg>
             <!--
-                Icon when menu is open.
-    
-                Menu open: "block", Menu closed: "hidden"
-              -->
+                  Icon when menu is open.
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
             <svg
               class="hidden h-6 w-6"
               fill="none"
@@ -75,9 +51,7 @@
             </svg>
           </button>
         </div>
-        <div
-          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
-        >
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
             <img
               class="h-8 w-auto"
@@ -89,22 +63,46 @@
             <div class="flex space-x-4">
               <!-- Current: "bg-black text-white", Default: "text-gray-500 hover:bg-gray-500 hover:text-white" -->
               <a
-              [routerLink]="['/students']"
+                [routerLink]="['/adminhome']"
                 class="bg-black text-white rounded-md px-3 py-2 text-sm font-medium"
                 aria-current="page"
+                >Home</a
+              >
+              <a
+                [routerLink]="['/studentsadmin']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >Students</a
               >
               <a
-              [routerLink]="['/admin']"
+                [routerLink]="['/courses']"
                 class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                >Admin</a
+                >Courses</a
               >
               <a
-              [routerLink]="['/already']"
+            [routerLink]="['/assignmentadmin']"
+            class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+            >Assignment</a
+          >
+              <a
+                [routerLink]="['/submissionsadmin']"
                 class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                >Already have an account?</a
+                >Submission</a
               >
-              
+              <a
+                [routerLink]="['/announcements']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Announcements</a
+              >
+              <a
+                [routerLink]="['/departments']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Departments</a
+              >
+              <a
+                [routerLink]="['/enrollmentsadmin']"
+                class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                >Enrollments</a
+              >
             </div>
           </div>
         </div>
@@ -162,106 +160,148 @@
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-black text-white", Default: "text-gray-500 hover:bg-gray-500 hover:text-white" -->
         <a
-        [routerLink]="['/home']"
+          [routerLink]="['/home']"
           class="bg-black text-white block rounded-md px-3 py-2 text-base font-medium"
           aria-current="page"
           >Home</a
         >
         <a
-        [routerLink]="['/assignments']"
+          [routerLink]="['/assignments']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Assignments</a
         >
         <a
-        [routerLink]="['/courses']"
+          [routerLink]="['/courses']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Courses</a
         >
         <a
-        [routerLink]="['/submissions']"
+          [routerLink]="['/submissions']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Submissions</a
         >
         <a
-        [routerLink]="['/announcements']"
+          [routerLink]="['/announcements']"
           class="text-gray-500 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >Announcements</a
         >
       </div>
     </div>
   </nav>
-  
-  
-  <div class="bg-sky-500 py-12">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-semibold text-white mb-6">Admin Access</h1>
-      <div class="bg-white rounded-lg p-6">
+
+  <div>
+    <div class="container mt-4" >
+      <h1 class="text-2xl font-bold mb-4">Create Assignment</h1>
+      <div class="border rounded-lg shadow-lg p-4 bg-gray-100">
         <form>
           <div class="mb-4">
-            <label for="adminname" class="block text-black mb-2">Admin Name</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Course ID</label>
             <input
               type="text"
-              [(ngModel)]="name"
+              [(ngModel)]="course"
               [ngModelOptions]="{ standalone: true }"
-              class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-              id="adminname"
-              name="adminname"
-              placeholder="Enter Name"
+              class="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="assignmentcourse"
+              name="assignmentcourse"
+              placeholder="Enter Course ID"
             />
           </div>
-  
-         
-          
           <div class="mb-4">
-            <label for="email" class="block text-black mb-2">Email</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2">Assignment Title</label>
             <input
               type="text"
-              [(ngModel)]="email"
+              [(ngModel)]="title"
               [ngModelOptions]="{ standalone: true }"
-              class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-              id="email"
-              name="email"
-              placeholder="Enter Your mail Id"
+              class="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="assignmenttitle"
+              name="assignmenttitle"
+              placeholder="Enter Assignment Title"
             />
           </div>
-          
-          <div class="mb-6">
-            <label for="contact_number" class="block text-black mb-2">Contact</label>
+    
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Assignment Description</label>
             <input
               type="text"
-              [(ngModel)]="contact_number"
+              [(ngModel)]="description"
               [ngModelOptions]="{ standalone: true }"
-              class="form-input w-full py-2 px-3 border border-gray-500 rounded focus:outline-none focus:ring-sky-500"
-              id="contact_number"
-              name="contact_number"
-              placeholder="Enter contact Number"
+              class="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="assignmentdescription"
+              name="assignmentdescription"
+              placeholder="Enter Assignment Description"
             />
           </div>
-          
-          <div class="flex justify-between items-center">
-            <button
-              type="submit"
-              class="btn btn-primary bg-sky-500 hover:bg-sky-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
-              (click)="saveRecords()"
-            >
-              Login
-            </button>
-            <!-- <button
-              type="submit"
-              class="btn btn-warning bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              (click)="UpdateRecords()"
-            >
-              Update
-            </button> -->
+    
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Assignment Due-Date</label>
+            <input
+              type="date"
+              [(ngModel)]="due_date"
+              [ngModelOptions]="{ standalone: true }"
+              class="w-full border rounded-lg py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="assignmentdue_date"
+              name="assignmentdue_date"
+              placeholder="Enter Assignment Due-Date"
+            />
           </div>
+          <button
+            type="submit"
+            class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded mt-4"
+            (click)="saveRecords()"
+          >
+            Submit
+          </button>
+          &nbsp;
+          <button
+            type="submit"
+            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-4"
+            (click)="UpdateRecords()"
+          >
+            Update
+          </button>
         </form>
       </div>
     </div>
+    
+    <div>
+        <div class="container mt-4">
+          <h1 class="text-2xl font-bold text-black mb-4">Assignment List</h1>
+          <table class="table-auto w-full">
+            <thead>
+              <tr>
+                <th class="px-4 py-2 text-white bg-gray-500">Course ID</th>
+                <th class="px-4 py-2 text-white bg-gray-500">Title</th>
+                <th class="px-4 py-2 text-white bg-gray-500">Description</th>
+                <th class="px-4 py-2 text-white bg-gray-500">Due-Date</th>
+                <th class="px-4 py-2 text-white bg-gray-500">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let StudentItem of AssignmentArray">
+                <td class="border px-4 py-2">{{ StudentItem.course }}</td>
+                <td class="border px-4 py-2">{{ StudentItem.title }}</td>
+                <td class="border px-4 py-2">{{ StudentItem.description }}</td>
+                <td class="border px-4 py-2">{{ StudentItem.due_date }}</td>
+                <td class="border px-4 py-2">
+                  <button
+                    type="button"
+                    class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded"
+                    (click)="setUpdate(StudentItem)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-2"
+                    (click)="setDelete(StudentItem)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
   </div>
-  
-  
-  
-  
-  
-  
-  

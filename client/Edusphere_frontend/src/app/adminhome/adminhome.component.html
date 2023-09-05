@@ -49,6 +49,11 @@
           >Submissions</a
         >
         <a
+          [routerLink]="['/assignmentadmin']"
+          class="text-sm font-extrabold leading-6 text-white"
+          >Assignment</a
+        >
+        <a
           [routerLink]="['/courses']"
           class="text-sm font-extrabold leading-6 text-white"
           >Courses</a
@@ -59,13 +64,18 @@
               >Departments</a
             >
             <a
-              [routerLink]="['/enrollments']"
-              class="text-gray-500 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+              [routerLink]="['/enrollmentsadmin']"
+              class="text-sm font-extrabold leading-6 text-white"
               >Enrollments</a
+            >
+            <a
+              [routerLink]="['/instructors']"
+              class="text-sm font-extrabold leading-6 text-white"
+              >Instructors</a
             >
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+        <a href="#" class="text-sm font-semibold leading-6 text-white"
           >Log in <span aria-hidden="true">&rarr;</span></a
         >
       </div>

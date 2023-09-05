@@ -24,7 +24,7 @@ export class AdminComponent {
     // You can also add logic to send this data to a server if needed.
 
     if(this.name==='ankit' && this.email==='a@gmail.com' && this.contact_number==='1234567890'){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/adminhome']);
       alert('Successfully Login!!')
       this.name=''
       this.email=''

@@ -16,6 +16,8 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { StudentadminComponent } from './studentadmin/studentadmin.component';
 import { SubmissionadminComponent } from './submissionadmin/submissionadmin.component';
 import { EnrollmentsadminComponent } from './enrollmentsadmin/enrollmentsadmin.component';
+import { AssignmentadminComponent } from './assignmentadmin/assignmentadmin.component';
+import { CourseInstructorComponent } from './course-instructor/course-instructor.component';
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
   { path: 'instructors', component: InstructorsComponent },
   { path: 'announcements', component: AnnouncementsComponent},
   { path: 'assignments', component: AssignmentsComponent},
+  { path: 'assignmentadmin', component: AssignmentadminComponent},
   { path: 'courses', component: CoursesComponent},
+  { path: 'coursesinstructors', component: CourseInstructorComponent},
   { path: 'departments', component: DepartmentsComponent},
   { path: 'enrollments', component: EnrollmentsComponent},
   { path: 'enrollmentsadmin', component: EnrollmentsadminComponent},
