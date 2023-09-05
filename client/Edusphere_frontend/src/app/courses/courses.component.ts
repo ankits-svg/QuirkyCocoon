@@ -2,6 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+
+interface course {
+  course_code: number;
+  // Add other properties here...
+}
+
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
@@ -9,11 +15,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CoursesComponent{
   CourseArray : any[] = [];
-
-    course_code:string='';
+  randomNumber = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+  Number= Math.floor(Math.random() * (99 - 10 + 1)) + 10;
+    course_code:string= `Web_${this.randomNumber.toString()}`;
     course_name:string='';
     department:string='';
-    credits:number=0;
+    credits:number=this.Number;
     description:string='';
     
     
@@ -37,10 +44,11 @@ export class CoursesComponent{
     "description": this.description
     };
  
-    this.http.post("http://127.0.0.1:8000/courses/create",bodyData).subscribe((res: any)=>
+    if(bodyData.description!=='' && bodyData.department!=='' && bodyData.credits!==0){
+      this.http.post<course[]>("http://127.0.0.1:8000/courses/create",bodyData).subscribe((res: course[])=>
     {
-        console.log("gettin the ID",res);
-        alert("Student Registered Successfully");
+        // console.log("gettin the ID",res[res.length-1]);
+        alert('New Course Is Successfully Added on Student LMS');
         this.getAllCourse();
         this.course_code = '';
         this.course_name = '';
@@ -48,6 +56,7 @@ export class CoursesComponent{
         this.credits=0;
         this.description=''
     });
+    }
   }
  
  
@@ -89,7 +98,7 @@ export class CoursesComponent{
     this.http.put(`http://127.0.0.1:8000/courses/update/${this.currentStudentID}`, bodyData).subscribe((resultData: any)=>
     {
         console.log(resultData);
-        alert("Student Registered Updateddd")
+        alert("Course Updation Successfully Done")
         this.course_code = '';
         this.course_name = '';
         this.department='';
@@ -105,7 +114,7 @@ export class CoursesComponent{
     this.http.delete(`http://127.0.0.1:8000/courses/delete/${data.course_id}`).subscribe((resultData: any)=>
     {
         console.log(resultData);
-        alert("Student Deleted")
+        alert("Course Deleted")
         this.getAllCourse();
     });
  

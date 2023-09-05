@@ -10,9 +10,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SubmissionsComponent{
   SubmissionArray : any[] = [];
-  
-  assignment: number=0; // You can use the assignment ID here
-  student: number=0; // You can use the student ID here
+  assign: string | null = localStorage.getItem('assignments');
+  studes: string | null = localStorage.getItem('studentdetails');
+  assignment: number=this.assign ? JSON.parse(this.assign).assignment_id : 0; // You can use the assignment ID here
+  student: number=this.studes ? JSON.parse(this.studes).student_id : 0;; // You can use the student ID here
   submission_date: string='';
   status: string='';
   remarks: string='';
@@ -38,7 +39,7 @@ saveRecords()
     "remarks": this.remarks
   };
 
-  if(bodyData.assignment!==0 && bodyData.status!=='' && bodyData.student!==0){
+  if(bodyData.status!=='' && bodyData.remarks!=='' && bodyData.student!==0){
     this.http.post("http://127.0.0.1:8000/submissions/create",bodyData).subscribe((res: any)=>
   {
       console.log("gettin the ID",res);

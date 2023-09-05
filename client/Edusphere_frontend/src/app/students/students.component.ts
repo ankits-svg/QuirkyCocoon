@@ -43,9 +43,9 @@ export class StudentsComponent{
     {
         console.log("gettin the ID",res);
           alert("Student Registered Successfully");
-        this.router.navigate(['/home']);
+        this.router.navigate(['/already']);
        
-        this.getAllStudent();
+        // this.getAllStudent();
         this.name = '';
         this.gender = '';
         this.date_of_birth = '';
@@ -67,62 +67,65 @@ export class StudentsComponent{
     .subscribe((res: any)=>
     {
         console.log(res);
+        
         this.StudentArray = res;
+        console.log("studentarray:",this.StudentArray[this.StudentArray.length-1])
+        localStorage.setItem('stud',JSON.stringify(this.StudentArray[this.StudentArray.length-1]))
     });
   }
  
  
-  setUpdate(data: any)
-  {
-   this.name = data.name;
-   this.gender = data.gender;
-   this.date_of_birth = data.date_of_birth;
-   this.major=data.major;
-   this.email=data.email;
-   this.contact_number=data.contact_number;
-   this.currentStudentID = data.student_id;
+  // setUpdate(data: any)
+  // {
+  //  this.name = data.name;
+  //  this.gender = data.gender;
+  //  this.date_of_birth = data.date_of_birth;
+  //  this.major=data.major;
+  //  this.email=data.email;
+  //  this.contact_number=data.contact_number;
+  //  this.currentStudentID = data.student_id;
    
-  }
+  // }
  
  
  
-  UpdateRecords()
-  {
-    let bodyData = 
-    {
-      "name" : this.name,
-    "gender": this.gender,
-    "date_of_birth": this.date_of_birth,
-    "major":this.major,
-    "email": this.email,
-    "contact_number": this.contact_number
-    };
+  // UpdateRecords()
+  // {
+  //   let bodyData = 
+  //   {
+  //     "name" : this.name,
+  //   "gender": this.gender,
+  //   "date_of_birth": this.date_of_birth,
+  //   "major":this.major,
+  //   "email": this.email,
+  //   "contact_number": this.contact_number
+  //   };
     
-    this.http.put(`http://127.0.0.1:8000/students/update/${this.currentStudentID}`, bodyData).subscribe((resultData: any)=>
-    {
-        console.log(resultData);
-        alert("Student Registered Updateddd")
-        this.name = '';
-        this.gender = '';
-        this.date_of_birth = '';
-        this.major='';
-        this.email='';
-        this.contact_number='';
-        this.getAllStudent();
-    });
-  }
+  //   this.http.put(`http://127.0.0.1:8000/students/update/${this.currentStudentID}`, bodyData).subscribe((resultData: any)=>
+  //   {
+  //       console.log(resultData);
+  //       alert("Student Registered Updateddd")
+  //       this.name = '';
+  //       this.gender = '';
+  //       this.date_of_birth = '';
+  //       this.major='';
+  //       this.email='';
+  //       this.contact_number='';
+  //       this.getAllStudent();
+  //   });
+  // }
 
 
-  setDelete(data: any)
-  {
-    this.http.delete(`http://127.0.0.1:8000/students/delete/${data.student_id}`).subscribe((resultData: any)=>
-    {
-        console.log(resultData);
-        alert("Student Deleted")
-        this.getAllStudent();
-    });
+  // setDelete(data: any)
+  // {
+  //   this.http.delete(`http://127.0.0.1:8000/students/delete/${data.student_id}`).subscribe((resultData: any)=>
+  //   {
+  //       console.log(resultData);
+  //       alert("Student Deleted")
+  //       this.getAllStudent();
+  //   });
  
-  }
+  // }
 
 
 }

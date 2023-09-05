@@ -26,6 +26,7 @@ import { SubmissionadminComponent } from './submissionadmin/submissionadmin.comp
 import { EnrollmentsadminComponent } from './enrollmentsadmin/enrollmentsadmin.component';
 import { AssignmentadminComponent } from './assignmentadmin/assignmentadmin.component';
 import { CourseInstructorComponent } from './course-instructor/course-instructor.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -60,7 +61,8 @@ import { CourseInstructorComponent } from './course-instructor/course-instructor
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

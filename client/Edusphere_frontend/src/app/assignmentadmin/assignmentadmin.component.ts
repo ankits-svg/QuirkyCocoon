@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
 export class AssignmentadminComponent {
   AnnounceArray:any[]=[];
   AssignmentArray: any[] = [];
-  
+  CourseArray : any[] = [];
+
 
   course: number | null = null; // Add course property
 
@@ -21,6 +22,7 @@ export class AssignmentadminComponent {
 
   constructor(private http: HttpClient) {
     this.getAllAssignment();
+    this.getAllCourse();
   }
 
   
@@ -114,6 +116,16 @@ export class AssignmentadminComponent {
     this.http.get('http://127.0.0.1:8000/announcements').subscribe((res: any) => {
       console.log(res);
       this.AnnounceArray = res.reverse();
+    });
+  }
+
+  getAllCourse()
+  {
+    this.http.get("http://127.0.0.1:8000/courses")
+    .subscribe((res: any)=>
+    {
+        console.log("getallcourse",res);
+        this.CourseArray = res;
     });
   }
 }
