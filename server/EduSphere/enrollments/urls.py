@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('enrollments', views.enrollmentApi, name='enrollment-list'),
+    path('enrollments/<int:id>', views.enrollmentApi, name='student-detail'),
     path('enrollments/create', views.enrollmentApi, name='enrollment-detail'),
 ]
 

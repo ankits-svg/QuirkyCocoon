@@ -28,4 +28,5 @@ urlpatterns = [
     path('', include('departments.urls')),  # Add this line
     path('', include('enrollments.urls')),  # Add this line
     path('', include('submissions.urls')),  # Add this line
+
 ]
