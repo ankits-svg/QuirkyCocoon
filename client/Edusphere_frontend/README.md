@@ -73,15 +73,17 @@ The frontend of the application utilizes the following routes:
 - <img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
 
 - Students Landing Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/7fc8505f-765f-46ce-a6d8-0d6a7ff81a6c"/>
 
 - Students Assignment Page
 <img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/5ba4ea3f-69d9-49bc-9822-40f25d9811b8"/>
 
 - Students Course & Instructor & Department Page
 <img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/c566c80e-b53b-49d6-add6-9603cd6029d0"/>
+
+
 - Students Enrollment Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/f1d91f1f-7e2b-44ff-b0e5-5062ae11ce92"/>
 
 - Admin Page
 <img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/c1e7d253-6b1f-4708-af45-e9a80ac8a47c"/>
