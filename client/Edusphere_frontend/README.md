@@ -71,30 +71,42 @@ The frontend of the application utilizes the following routes:
 
 - Main Page
 - <img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+
 - Students Landing Page
 <img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+
 - Students Assignment Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/5ba4ea3f-69d9-49bc-9822-40f25d9811b8"/>
+
 - Students Course & Instructor & Department Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/c566c80e-b53b-49d6-add6-9603cd6029d0"/>
 - Students Enrollment Page
 <img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+
 - Admin Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/c1e7d253-6b1f-4708-af45-e9a80ac8a47c"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d7a6bbf3-8d06-4902-98c0-6f74350912f4"/>
+
 - Admin Student List
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/8ed71a1b-8d5c-4872-b6bb-8ba04f42f288"/>
+
 - Admin Create Assignment Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/9294b84c-1528-491b-a02f-35c1c3b8455f"/>
+
 - Admin Submission Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/2ed69886-394b-4f7e-865e-3e471bef3cde"/>
+
 - Admin Announcements Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/bfd94129-7e94-462a-9c7d-87c8a781c430"/>
+
 - Admin Enrollment List Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/58b12ab8-51ca-44d7-8cb6-e4b6d0c68e64"/>
+
 - Admin Instructor Management Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/13b3a775-a4bf-46aa-9bf4-ae6a1757d62a"/>
+
 - Admin Department Management Page
-<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d6d2a28b-84ff-4a5c-abb5-60e13fc15bb5"/>
+<img src="https://github.com/masai-course/Ankit_fw19_0178/assets/103572350/d67ea6b0-7419-4188-96a2-912d41e05854"/>
 
 
 ## **Let's Create Quirky Cocoon Together!**
