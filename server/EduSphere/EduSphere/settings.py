@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1sk#^e@c%d49x=%15$lm#-15!!rlnn*(#6f70iuv_jj#3m(#^v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -79,6 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'EduSphere.wsgi.application'
+# WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 
 # Database
